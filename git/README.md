@@ -27,6 +27,8 @@ https://git-scm.com/book/ru/v2/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-
 
 # Base commands
 
+> In .gitignore you may specify files or folder, what you don't want to push in you repo, check exmaple in root directory in repository
+
 ```bash
 # Clone whole repo from GIT 
 git clone ${repo} ${path/to/folder}
