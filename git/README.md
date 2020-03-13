@@ -15,7 +15,7 @@ https://git-scm.com/book/ru/v2/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-
 
 Если вы хотите что-то обновить внутри моего репозитория, то нажимаете на ```fork``` и далаете Pull Request в ```master```, после чего я проверю и могу сделать ```merge``` и репозиторий обновиться. Пересмотр и обновление документации приветсвуется.
 
-![Image of pull request](images/pullrequest.png)
+![Image of pull request](https://github.com/pannoi/tpt/blob/master/git/images/pullRequest.png)
 
 ## Репозитории студентов
 
@@ -23,7 +23,7 @@ https://git-scm.com/book/ru/v2/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-
 
 > Repository -> Settings -> Manage Access -> Invite collaborator -> @pannoi
 
-![Image of collaborator](images/collaborators.png)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/git/images/collaborators.PNG)
 
 # Base commands
 
