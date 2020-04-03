@@ -1,0 +1,6 @@
+---
+- name: First TPT playbook
+  hosts: all
+  become: true
+  roles:
+    - role: tpt
