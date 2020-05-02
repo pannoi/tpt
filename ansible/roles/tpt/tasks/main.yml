@@ -1,1 +1,28 @@
 ---
+# Установка пакетов, используя модуль apt
+    - name: Install apcahe+php modules 
+      apt:
+          name: "{{ item }}" 
+          update_cache: yes
+          state: latest
+      with_items: "{{ packages }}" # Используем with_items, если нужно установить массив пакетов
+
+# Запуск сервиса, используя модуль service
+    - name: Start apache2 service
+      service:
+          name: apache2
+          state: started
+          enabled: yes
+
+# Аналог команды wget, используя модуль get_url
+    - name: get install packages
+      get_url:
+          url: "{{ packageurl }}"
+          dest: "{{ packagedir }}"
+          mode: "0777"
+  
+# Распаковка установленного пакета, используя модуль 
+    - name: Dpkg installed package
+      dpkg_selections:
+        name: "{{ packagepkg }}"
+        selection: hold # Hold - установка без обновления пакета
