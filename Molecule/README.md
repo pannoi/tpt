@@ -54,9 +54,36 @@ molecule init role -r role-name -d docker
 cd role-name
 ```
 
+## Файл конфигурации molecule.yml
+
+Перед началом теста Molecule проверяет конфигурационный файл molecule.yml, чтобы убедиться, что все в порядке. Он также печатает эту тестовую матрицу, которая определяет порядок тестовых действий.
+Тестовую матрицу можно посмотреть в файле molecule.yml, который по дефолту хранится тут:
+> /home/username/role-name/molecule/default/molecule.yml
+
 ## Тестирование роли
 
 Проверьте роль по умолчанию, чтобы проверить, правильно ли настроена Молекула:
 ```bash
 molecule test
+```
+Вывод при тестировании выглядит следующим образом:
+```bash
+Output
+--> Validating schema /home/username/role-name/molecule/default/molecule.yml.
+Validation completed successfully.
+--> Test matrix
+
+└── default
+    ├── lint
+    ├── destroy
+    ├── dependency
+    ├── syntax
+    ├── create
+    ├── prepare
+    ├── converge
+    ├── idempotence
+    ├── side_effect
+    ├── verify
+    └── destroy
+...
 ```

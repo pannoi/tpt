@@ -15,14 +15,14 @@
           enabled: yes
 
 # Аналог команды wget, используя модуль get_url
-    - name: get install packages
+    - name: programm packages
       get_url:
-          url: "{{ packageurl }}"
-          dest: "{{ packagedir }}"
+          url: "{{ programmurl }}"
+          dest: "{{ programmdir }}"
           mode: "0777"
-  
+
 # Распаковка установленного пакета, используя модуль 
-    - name: Dpkg installed package
+    - name: Dpkg programm package
       dpkg_selections:
-        name: "{{ packagepkg }}"
+        name: "{{ programmpkg }}"
         selection: hold # Hold - установка без обновления пакета

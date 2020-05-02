@@ -20,7 +20,7 @@ Jenkins - программная система с открытым исходн
 Manage Jenkins > Manage Plugins > Availabe
 
 Перед вами появляется список доступных для установки плагинов
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/PluginsListJenkins.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/PluginsListJenkins.PNG)
 
 Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины:
 ```bash
@@ -62,7 +62,7 @@ Docker plugin
 ```bash
 New Item > Укажите имя и выберите тип Pipeline, после чего снизу нажимаем OK
 ```
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/CreateProjektJenkins.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/CreateProjektJenkins.PNG)
 
 После этого, ниже в разделе Pipeline, выбираем следующие параметры:
 ```bash
@@ -74,7 +74,7 @@ SCM > Git
   ```bash 
 Repository URL > ссылка на ваш репозиторий на GitHub
  ```
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ConnectGitRepToProjekt.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ConnectGitRepToProjekt.PNG)
 
 Для завершения нажимаем SAVE
 
@@ -95,16 +95,16 @@ Manage Jenkins > Global Tool Configuration > Git
 ## Билд проекта
 
 Поле того как мы создали проект, он отобразится на главной странице в Jenkins
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ProjektOnMainPageJenkins.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektOnMainPageJenkins.PNG)
 
 Чтобы произвести билд проекта, нам нужно нажать на его название. В открывшемся окне проекта, нам необходимо нажать на кнопку [ Build Now ], которая находится в меню слева.
 > P.s. Для проведения билда, нужно создать блок в файле Jenkinsfile, который должен храниться в ветке вашего приложения.
 
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ProjektBuildJenkins.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildJenkins.PNG)
 
 После успешного билда проекта, результат можно посмотреть, нажав [ Open Blue Ocean ] в меню слева.
 
-![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ProjektBuildResult.PNG)
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildResult.PNG)
 
 Как можно видеть, билд прошел успешно
 

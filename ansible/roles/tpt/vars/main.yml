@@ -1,1 +1,16 @@
+---
+# Создание переменной на указание нескольких установочных пакетов
+packages:
+    - apache2
+    - mysql-server
+    - mysql-client
+    - php
 
+# Создание переменной для указания URL адреса до установочного файла
+packageurl: "http://repo.package.com/path/to/file/example.deb"
+
+# Создание переменной для указания места хранения файла/пакета
+packagedir: "/home/username/packagedir"
+
+# Создание переменной для указания установленного файла для распаковки
+packagepkg: "name_of_installed_package_example_version.deb"
