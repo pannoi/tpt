@@ -22,7 +22,7 @@ Manage Jenkins > Manage Plugins > Availabe
 Перед вами появляется список доступных для установки плагинов
 ![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/PluginsListJenkins.PNG)
 
-Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установленны следующие плагины:
+Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины:
 ```bash
 Git client plugin
 #Utility plugin for Git support in Jenkins	
@@ -64,7 +64,7 @@ New Item > Укажите имя и выберите тип Pipeline, после
 ```
 ![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/CreateProjektJenkins.PNG)
 
-После этого, ниже в разделе Pipeline, выбираем слудующие параметры:
+После этого, ниже в разделе Pipeline, выбираем следующие параметры:
 ```bash
 Definition > Pipeline script from CSM
  ```
@@ -97,7 +97,7 @@ Manage Jenkins > Global Tool Configuration > Git
 Поле того как мы создали проект, он отобразится на главной странице в Jenkins
 ![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ProjektOnMainPageJenkins.PNG)
 
-Чтобы произвезти билд проекта, нам нужно нажать на его название. В открывшемся окне проекта, нам необходимо нажать на кнопку [ Build Now ], которая находится в меню слева.
+Чтобы произвести билд проекта, нам нужно нажать на его название. В открывшемся окне проекта, нам необходимо нажать на кнопку [ Build Now ], которая находится в меню слева.
 > P.s. Для проведения билда, нужно создать блок в файле Jenkinsfile, который должен храниться в ветке вашего приложения.
 
 ![Image of collaborator](https://github.com/Karamnov/Jenkins/blob/master/images/ProjektBuildJenkins.PNG)
