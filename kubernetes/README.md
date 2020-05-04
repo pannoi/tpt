@@ -98,6 +98,7 @@ kubectl create namespace "имя"
 >> https://kubernetes.io/ru/docs/concepts/overview/working-with-objects/namespaces/
 >> https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
 
+#### Написание манифестов
 
 Далее вы можете уже заняться описанием своего манифеста, где будут все нужные вам ресурсы.
 
