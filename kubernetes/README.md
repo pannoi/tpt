@@ -21,7 +21,29 @@ Kubernetes или "k8s" - это инструмент, который позво
 
 > Windows
 
-Установка с помощью `Chocolatey`:
+Установка приложеня `Minikube` с помощью `Chocolatey`:
 ```bash
 choco install minikube
+```
+
+Базовые команды для использования `Minikube`:
+```bash
+minikube start
+```
+
+```bash
+minikube stop
+```
+
+```bash
+minikube delete
+```
+
+Установка утилиты `kubectl` с помощью `Chocolatey`:
+```bash
+choco install kubernetes-cli
+```
+Проверить установленную версию:
+```bash
+kubectl version --client
 ```
