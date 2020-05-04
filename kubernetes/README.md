@@ -140,7 +140,9 @@ metadata:
   namespace: "имя namespace"
 ```
 
-> Более подробная информация для изучения конфигураций `YAML` файлов: https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
+> Более подробная информация для изучения конфигураций `YAML` файлов:
+>> https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
+>> https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
 #### Применение и запуск
 Применить `YAML` файл:
