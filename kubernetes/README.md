@@ -63,7 +63,7 @@ kubectl version --client
 
 > Более подробная официальная информация: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
 
-#### Создание namespace
+#### Работа с namespace
 После того, как вы запустили команду `minikube start` и виртуальная машина поднялась, можно переходить к создаю `namespace` и настройки `YAML` файлов.
 
 Почти все ресурсы Kubernetes'a (поды, сервисы и другие) находятся в так называемых пространствах имен - `namespace`.
@@ -92,6 +92,12 @@ kubectl create -f "имя"
 
 ```bash
 kubectl create namespace "имя"
+```
+
+Удалить `namespace`:
+
+```bash
+kubectl delete ns "имя namespace"
 ```
 
 > Официальная документация: 
@@ -135,3 +141,10 @@ metadata:
 ```
 
 > Более подробная информация для изучения конфигураций `YAML` файлов: https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
+
+#### Применение и запуск
+Применить `YAML` файл:
+
+```bash
+kubectl apply -f "имя манифест файла" (с расширением `.yml`)
+```
