@@ -126,6 +126,8 @@ metadata:
   namespace: "имя namespace"
 ```
 
+> Официальная документация: https://kubernetes.io/docs/concepts/services-networking/service/
+
 > Deployment
 
 ```bash
