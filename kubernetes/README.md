@@ -12,7 +12,7 @@ Kubernetes или "k8s" - это инструмент, который позво
 
 > Ссылка на официальную документацию на русском языке: https://kubernetes.io/ru/docs/concepts/overview/components/
 
-### Установка
+### Установка на Windows 10
 Ссылка на документацию по установке: https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 Возможные варианты для установки:
 > Linux
@@ -21,14 +21,14 @@ Kubernetes или "k8s" - это инструмент, который позво
 
 > Windows
 
-Установка приложеня `Minikube` с помощью `Chocolatey`:
+Установка приложеня `Minikube` с помощью `Chocolatey` (запущенный с правами администратора):
 ```bash
 choco install minikube
 ```
 
 Базовые команды для использования `Minikube`:
 ```bash
-minikube start
+minikube start # запустить кластер
 ```
 
 ```bash
@@ -39,7 +39,7 @@ minikube stop
 minikube delete
 ```
 
-Установка утилиты `kubectl` с помощью `Chocolatey`:
+Установка утилиты `kubectl` с помощью `Chocolatey` (запущенный с правами администратора):
 ```bash
 choco install kubernetes-cli
 ```
