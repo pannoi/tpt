@@ -31,6 +31,12 @@ choco install minikube
 minikube start # запустить кластер
 ```
 
+*У вас запустится виртуальная машина в вашем гипервизоре (в моем случае - Hyper-V)*
+
+```bash
+minikube status # проверить статус состояния кластера
+```
+
 ```bash
 minikube stop # остановить работу кластера
 ```
@@ -51,3 +57,31 @@ choco install kubernetes-cli
 ```bash
 kubectl version --client
 ```
+
+### Работа с Kubernetes
+Теперь вы можете работать со своим кластером через CLI-инструмент `kubectl`.
+
+> Более подробная официальная информация: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
+
+#### Создание namespace
+После того, как вы запустили команду `minikube start` и виртуальная машина поднялась, можно переходить к создаю `namespace` и настройки `YAML` файлов.
+
+Почти все ресурсы Kubernetes'a (поды, сервисы и другие) находятся в так называемых пространствах имен - `namespace`.
+
+Пространства имён представляют собой виртуальные кластеры. Пространства имен - это способ разделения ресурсов кластера.
+
+Используйте следующую команду, чтобы вывести список существующих пространств имён в кластере:
+
+```bash
+kubectl get namespace
+```
+
+Создать `namespace`:
+
+```bash
+kubectl create namespace "имя"
+```
+
+> Официальная документация: 
+>> https://kubernetes.io/ru/docs/concepts/overview/working-with-objects/namespaces/
+>> https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
