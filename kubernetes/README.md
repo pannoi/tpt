@@ -84,11 +84,7 @@ metadata:
   name: <insert-namespace-name-here>
 ```
 
-Создать `namespace` (2 варианта):
-
-```bash
-kubectl create -f "имя"
-```
+Создать `namespace`:
 
 ```bash
 kubectl create namespace "имя"
