@@ -43,6 +43,10 @@ minikube delete
 ```bash
 choco install kubernetes-cli
 ```
+
+> Далее нам нужно перенести `kubectl.exe` файл в папку `system32`.
+
+
 Проверить установленную версию:
 ```bash
 kubectl version --client
