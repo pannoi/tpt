@@ -32,11 +32,11 @@ minikube start # запустить кластер
 ```
 
 ```bash
-minikube stop
+minikube stop # остановить работу кластера
 ```
 
 ```bash
-minikube delete
+minikube delete # удалить кластер
 ```
 
 Установка утилиты `kubectl` с помощью `Chocolatey` (запущенный с правами администратора):
