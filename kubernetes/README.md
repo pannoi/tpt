@@ -126,7 +126,7 @@ metadata:
   namespace: "имя namespace"
 ```
 
-> Официальная документация: https://kubernetes.io/docs/concepts/services-networking/service/
+>> Официальная документация: https://kubernetes.io/docs/concepts/services-networking/service/
 
 > Deployment
 
@@ -137,6 +137,8 @@ metadata:
   name: "имя deployment'а"
   namespace: "имя namespace"
 ```
+
+>> Официальная документация: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
 > Более подробная информация для изучения конфигураций `YAML` файлов:
 >> https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
