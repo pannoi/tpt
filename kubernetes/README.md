@@ -62,7 +62,6 @@ kubectl version --client
 Теперь вы можете работать со своим кластером через CLI-инструмент `kubectl`.
 
 > Более подробная официальная информация: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
-
 #### Namespace
 После того, как вы запустили команду `minikube start` и виртуальная машина поднялась, можно переходить к создаю `namespace` и настройки `YAML` файлов.
 
@@ -150,3 +149,6 @@ metadata:
 ```bash
 kubectl apply -f "имя манифест файла" (с расширением .yml)
 ```
+
+#### Docker в Kubernetes
+Для работы с контейнерами в Kubernetes используется Docker. Для работы с докером в Windows можно использовать `Powershell`, где поддерживаются все те же команды по работе с контейнерами докера посредством командной утилиты `Docker`.
