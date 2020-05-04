@@ -76,7 +76,19 @@ kubectl version --client
 kubectl get namespace
 ```
 
-Создать `namespace`:
+Далее, вам нужно создать `.yml` файл и описать `namespace`:
+```bash
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: <insert-namespace-name-here>
+```
+
+Создать `namespace` (2 варианта):
+
+```bash
+kubectl create -f "имя"
+```
 
 ```bash
 kubectl create namespace "имя"
