@@ -97,3 +97,38 @@ kubectl create namespace "имя"
 > Официальная документация: 
 >> https://kubernetes.io/ru/docs/concepts/overview/working-with-objects/namespaces/
 >> https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+
+
+Далее вы можете уже заняться описанием своего манифеста, где будут все нужные вам ресурсы.
+
+К примеру: pod, service, deployment.
+
+> Pod
+
+```bash
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "имя пода"
+  namespace: "имя namespace"
+```
+
+> Service
+
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  name: "имя сервиса"
+  namespace: "имя namespace"
+```
+
+> Deployment
+
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "имя deployment'а"
+  namespace: "имя namespace"
+```
