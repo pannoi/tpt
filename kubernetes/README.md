@@ -132,3 +132,5 @@ metadata:
   name: "имя deployment'а"
   namespace: "имя namespace"
 ```
+
+> Более подробная информация для изучения конфигураций `YAML` файлов: https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
