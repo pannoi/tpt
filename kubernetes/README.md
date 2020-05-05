@@ -144,7 +144,7 @@ metadata:
 >> https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
 >> https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
-#### Применение, проверка и запуск
+#### Проверка, применение и запуск
 
 Примените ваши `YAML` файлы один за другим, с помощью следующей команды:
 
