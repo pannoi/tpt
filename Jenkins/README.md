@@ -22,7 +22,7 @@ Manage Jenkins > Manage Plugins > Availabe
 Перед вами появляется список доступных для установки плагинов
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/PluginsListJenkins.PNG)
 
-Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины:
+Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины в Jenkins:
 ```bash
 Git client plugin
 #Utility plugin for Git support in Jenkins	
