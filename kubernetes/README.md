@@ -134,7 +134,7 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "имя deployment'а"
+  name: "имя deployment"
   namespace: "имя namespace"
 ```
 
