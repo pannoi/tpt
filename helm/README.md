@@ -77,4 +77,4 @@ helm install $CHART_NAME $PATH/TO/HELM --namespace=$NAMESPACE_NAME
 
 > Работа с чартами (коллекцией `YAML` файлов) в Helm и более подробная документация с примерами: https://helm.sh/docs/topics/charts/
 
-> Полезным может оказаться: https://www.youtube.com/watch?v=Zzwq9FmZdsU
+> Полезным может оказаться: https://www.youtube.com/watch?v=Zzwq9FmZdsU - здесь привидены примеры построения чартов
