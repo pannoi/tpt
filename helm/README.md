@@ -15,7 +15,7 @@ Helm поможет вам с управлением приложений в Kub
 
 > Официальная документация: https://helm.sh/
 
-## Предпосылки
+### Предпосылки
 
 > Если у вас присутствует настроенный Kubernetes, то можно пропустить этот шаг.
 
@@ -75,4 +75,6 @@ helm create "имя"
 helm install $CHART_NAME $PATH/TO/HELM --namespace=$NAMESPACE_NAME
 ```
 
-Работа с чартами в Helm и более подробная документация с примерами: https://helm.sh/docs/topics/charts/
+> Работа с чартами (коллекцией `YAML` файлов) в Helm и более подробная документация с примерами: https://helm.sh/docs/topics/charts/
+
+> Полезным может оказаться: https://www.youtube.com/watch?v=Zzwq9FmZdsU
