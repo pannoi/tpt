@@ -93,6 +93,7 @@ docker docker-subcommand --help
 Создайте файл с любым именем, к примеру, `dockerfile` (указывать никакой формат не нужно)
 Инструкция для докер файла:
 
+
 Предположим, что мы хотим запустить приложение.
 
 `FROM` какой базовый image вы собираетесь использовать для работы, также - `Docker base image`
@@ -108,8 +109,6 @@ docker docker-subcommand --help
 `CMD` какие команды выполнять внутри контейнера, когда он будет запущен.
 
 > Официальная документация: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-
-> Пример работы: https://github.com/kraken888/tpt/new/master/docker/dockerfile
 
 ### Работа с Docker образами
 Вы можете выполнять поиск доступных образов на Docker Hub с помощью команды `docker` с субкомандой `search`.
