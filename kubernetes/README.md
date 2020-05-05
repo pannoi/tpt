@@ -62,6 +62,7 @@ kubectl version --client
 Теперь вы можете работать со своим кластером через CLI-инструмент `kubectl`.
 
 > Более подробная официальная информация: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
+
 #### Namespace
 После того, как вы запустили команду `minikube start` и виртуальная машина поднялась, можно переходить к создаю `namespace` и настройки `YAML` файлов.
 
@@ -92,7 +93,7 @@ kubectl create namespace "имя"
 Удалить `namespace`:
 
 ```bash
-kubectl delete ns "имя namespace"
+kubectl delete ns "имя"
 ```
 
 > Официальная документация: 
@@ -143,12 +144,33 @@ metadata:
 >> https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
 >> https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
-#### Применение и запуск
-Применить `YAML` файл:
+#### Применение, проверка и запуск
+
+Примените ваши `YAML` файлы один за другим, с помощью следующей команды:
 
 ```bash
 kubectl apply -f "имя манифест файла" (с расширением .yml)
 ```
 
+Чтобы убедиться в наличии вашего сервиса среди остальных, введите команду:
+
+```bash
+minikube service list
+```
+
+Для проверки работоспособности сервиса, можете использовать следующую команду:
+
+```bash
+minikube service "имя сервиса" -n "имя namespace"
+```
+
 #### Docker в Kubernetes
 Для работы с контейнерами в Kubernetes используется Docker. Для работы с докером в Windows можно использовать `Powershell`, где поддерживаются все те же команды по работе с контейнерами и образами докера посредством командной утилиты `Docker`.
+
+Также, для работы с докером вы можете использовать DockerHub:
+
+> https://hub.docker.com/
+
+Пример процесса аутентификации на DockerHub c помощью CLI-команд:
+
+> https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
