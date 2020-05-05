@@ -9,8 +9,8 @@
 > Официальная документация https://molecule.readthedocs.io/en/latest/#
 
 > Для работы используйте:
-molecule 2.20
-ansible 2.7
+molecule==2.20
+ansible==2.7
 
 ## Подготовка среды
 
@@ -34,12 +34,12 @@ python -m pip install virtualenv
 
 Создание и активирование виртуальной среды:
 ```bash
-python -m virtualenv
+python -m virtualenv env_name
 ```
 
 Активируйте его, чтобы убедиться, что ваши действия ограничены этой средой:
 ```bash
-source my_env/bin/activate
+source env_name/bin/activate
 ```
 
 Установка molecule и docker с помощью pip:
