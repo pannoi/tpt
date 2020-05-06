@@ -101,6 +101,36 @@ kubectl create namespace "имя"
 kubectl delete ns "имя"
 ```
 
+### Работа с остальными объектами
+
+Точно также, как с пространством имен, можно работать и с другими ресурсами.
+
+Можно выводить информацию и удалять их.
+
+Вывести все:
+
+```bash
+kubectl get all
+```
+
+Относительно пространства имен:
+
+```bash
+kubectl get all -n "namespace"
+```
+
+Удалить:
+
+```bash
+kubectl delete "что" "имя" -n "namespace"
+```
+
+Посмотреть описание:
+
+```bash
+kubectl describe "что" "имя" -n "namespace"
+```
+
 > Официальная документация: 
 >> https://kubernetes.io/ru/docs/concepts/overview/working-with-objects/namespaces/
 >> https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
