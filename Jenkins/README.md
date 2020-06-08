@@ -1,28 +1,26 @@
 # Jenkins
 
-## Инфо
+## Info
 
-Jenkins - программная система с открытым исходным кодом на Java, предназначенная для обеспечения процесса непрерывной интеграции программного обеспечения.
-Непрерывная интеграция- это процесс разработки программного обеспечения, смысл которого заключается в постоянном соединении рабочих копий в общую линию разработки, и выполнении постоянных автоматизированных сборок проекта для быстрого выявления возможных ошибок и решения интеграционных проблем.
+Jenkins is an open source software system in Java designed to ensure the process of continuous software integration. Continuous integration is a software development process that involves constantly connecting work copies to a common development line, and executing permanent automated project builds to quickly identify possible errors and solve integration problems.
 
-Для того, чтобы связать Jenkins с GitHub репозиторием, необходимо выполнить следующие действия:
+To link Jenkins to the GitHub repository, here's what you need to do:
 
-## Установка Jenkins
+## Jenkins Installation 
 > Windows
 
-Дла того, чтобы установить Jenkins на Windows, нужно скачать установочный файл с официального сайта.
+To install Jenkins on Windows, you need to download the installation file from the official site.
 > https://www.jenkins.io/download/
 
 
 
-## Установка плагинов
-Для установки необходимых плагинов необходимо пройти в:
-Manage Jenkins > Manage Plugins > Availabe
+## Plugin Installation 
+To install the necessary plug-ins, you need to go to: Manage Jenkins > Manage Plugins > Available
 
-Перед вами появляется список доступных для установки плагинов
+Here is a list of plug-ins available to install 
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/PluginsListJenkins.PNG)
 
-Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины в Jenkins:
+For proper work of GIT, make sure you have Git installed on your computer, as well as the following plugins in Jenkins:
 ```bash
 Git client plugin
 #Utility plugin for Git support in Jenkins	
@@ -49,7 +47,7 @@ GitHub plugin
 #This plugin integrates GitHub to Jenkins.
 ```
 
-> Так же для работы, нам понадобятся плагины:
+> For wor as well you need next things:
 ```bash
 Blue Ocean
 #BlueOcean Aggregator
@@ -57,14 +55,14 @@ Blue Ocean
 Docker plugin
 #This plugin integrates Jenkins with Docker
 ```
-## Создание проекта
-Для создания проекта в Jenkins, на главной станице пройдите в:
+## Project Creation
+To create a project in Jenkins, on the main page, go to:
 ```bash
-New Item > Укажите имя и выберите тип Pipeline, после чего снизу нажимаем OK
+New Item > choose name and select type Pipeline, после чего снизу нажимаем OK
 ```
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/CreateProjektJenkins.PNG)
 
-После этого, ниже в разделе Pipeline, выбираем следующие параметры:
+After that, below in the Pipeline section, select the following options:
 ```bash
 Definition > Pipeline script from CSM
  ```
@@ -76,36 +74,35 @@ Repository URL > ссылка на ваш репозиторий на GitHub
  ```
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ConnectGitRepToProjekt.PNG)
 
-Для завершения нажимаем SAVE
+To complete press SAVE
 
-> При возникновении ошибки, связанной с подключением к Git репозиторию, убедитесь что у вас указан путь к git.exe на вашем компьютере.
+> If you have an error related to the Git repository connection, make sure you have a path to git.exe on your computer.
 ```bash
 Failed to connect to repository :
 Error performing git command: 
 git.exe ls-remote -h https://github.com/username/projekt.git HEAD
 ```
-Для настройки, нужно пройти в:
+To set up, you need to go to:
 ```bash
 Manage Jenkins > Global Tool Configuration > Git
 ```
-В поле Path to Git executable нужно указать путь до git.exe, установленном на вашем компьютере. 
+In the Path to Git executable field you need to point the way to git.exe installed on your computer.
 > By Deffault - C:\Users\username\AppData\Local\Programs\Git\cmd\git.exe
 
 
-## Билд проекта
+## Project Build
 
-Поле того как мы создали проект, он отобразится на главной странице в Jenkins
+After we create project, it will appear on the front page in Jenkins 
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektOnMainPageJenkins.PNG)
 
-Чтобы произвести билд проекта, нам нужно нажать на его название. В открывшемся окне проекта, нам необходимо нажать на кнопку [ Build Now ], которая находится в меню слева.
-> P.s. Для проведения билда, нужно создать блок в файле Jenkinsfile, который должен храниться в ветке вашего приложения.
+To build a project, we need to click on its name. In the opening window of the project, we need to click on the "Build Now" button, which is on the menu on the left.
+> P.s. To hold a build, you need to create a block in the Jenkinsfile file, which must be stored in the branch of your application.
 
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildJenkins.PNG)
 
-После успешного билда проекта, результат можно посмотреть, нажав [ Open Blue Ocean ] в меню слева.
-
+After a successful project building, the result can be seen by clicking the [ Open Blue Ocean ] menu on the left.
 ![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildResult.PNG)
 
-Как можно видеть, билд прошел успешно
+As you can see, the build was made successfully
 
-> Так же, при возникновении ошибок вам будет описано, в чем у вас заключается проблема.
+> Also, if you make mistakes, you'll be told what your problem is.
