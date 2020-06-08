@@ -1,43 +1,43 @@
 # Ansible
 
-## Инфо
+## Info
 
-Ansible это очень гибкий и легкий инструмент для написания сценариев автоматизации любой сложности. Вы можете описать в нем как простое окружение разработчика так сложную структуру крупного проекта с несколькими окружениями (dev/stage/prod).
+Ansible is a very flexible and easy tool for writing scripts to automation scenarios of any complexity. You can describe in it how a simple developer environment so complex large multi-environment project (dev/stage/prod).
 
-> Официальная документация: http://docs.ansible.com/
-# Установка
+> Official documentation:  http://docs.ansible.com/
+# Installation
 
 > Ubuntu
 
-Для начала нужно обновить список пакетов для установки, чтобы гарантировано получить последнюю версию нужного нам Ansible
+First, you need to update the list of packages to guaranteed get the latest version of the Ansible we need
 ```bash
 sudo apt update
 ```
-Так же стоит обновить уже установленные пакеты
+It is also worth updating the packages already installed
 ```bash
 sudo apt upgrade
 ```
 
-Теперь установим Ansible
+Now install Ansible
 ```bash
 sudo apt install ansible
 ```
-Для проверки того, что Ansible был установлен, выполните следующую команду:
+To verify that Ansible has been installed, follow the following command:
 ```bash
 ansible --versioon
 ```
 
-Все блоки в Ansible, будь то плейбуки или варсы (переменные), начинаются с того, что мы прописываем в первую строку файла:
+All blocks in Ansible, be it playbooks or vars (variables), start with what we prescribe in the first line of the file:
 ```bash
 ---
 ```
-# Плейбуки
+# Playbooks
 
-Ansible playbooks — это способ отправки команд на удалённые компьютеры с помощью скриптов. Вместо того, чтобы индивидуально использовать команды Ansible для удалённой настройки компьютеров из командной строки, вы можете настраивать целые сложные среды, передавая скрипт одной или нескольким системам.
+Ansible playbooks are a way to send commands to remote computers using scripts. Instead of individually using Ansible commands to remotely customize computers from the command line, you can customize entire complex environments by passing the script to one or more systems.
 
-Расширением файла, будь то плейбук / таски / переменные (vars), является .yml
+File extension, whether it's playbook/tasks/variable (vars), is .yml
 
-> Структура блока в файле playbook.yml
+> Block structure in file playbook.yml
 ```bash
 ---
 - name: Install Packages
@@ -47,12 +47,11 @@ Ansible playbooks — это способ отправки команд на у�
     - role: tpt
 ```
 
-## Таски
+## Tasks
 
-Ansible tasks - собственно это задачи, которые будут исполняться Ansibl-ом, по типу установки пакетов, запуска сервисов, распаковки, копирования и тому подобного.
-С примером тасков можно ознакомится в разделе roles/tpt/tasks в данной документации.
+Ansible tasks - are tasks that will be performed by Ansible, by the type of installation of packages, launch services, unpacking, copying and the like. Examples of shuffles can be found in the roles/tpt/tasks section of this documentation.
 
-Пример блока в task на установку пакетов, записанных в переменную packages
+An example of a block in a task to install packages recorded in variable packages
 ```bash
     - name: Install apcahe+php modules 
       apt:
@@ -62,12 +61,13 @@ Ansible tasks - собственно это задачи, которые буд�
       with_items: "{{ packages }}"
 ```
 
-> Ознакомиться со всеми модулями можно тут: https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
+> You can read all the modules here: 
+https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
 
-## Роли
+## Roles
 
-Это способ сгруппировать несколько задач в один контейнер, чтобы эффективно автоматизировать работу с помощью понятной структуры каталогов.
-Структура роли:
+It's a way to group multiple tasks into one container to effectively automate your work using an understandable directory structure. 
+Role structure:
 ```bash
 /home/user/ansible:
     playbook.yml
@@ -78,9 +78,8 @@ Ansible tasks - собственно это задачи, которые буд�
             vars:
                 main.yml
 ```
->В папке vars, в файле main.yml можно указать переменные, которые могут хранить в себе информацию, по типу списка приложений, текста и т.п.
-/vars/main.yml
-С примером переменных можно ознакомиться в разделе roles/tpt/vars в данной документации.
+>In the vars folder, in the main.yml file, you can specify variables that can store information, such as a list of applications, text, etc. /vars/main.yml
+With an example of variables can be found in the roles section/tpt/vars in this documentation.
 
 
  

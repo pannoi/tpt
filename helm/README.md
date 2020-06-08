@@ -1,46 +1,44 @@
 ## Helm
 
-### Инфо
+### Info
 
-Helm - это пакетный менеджер для Kubernetes.
-Helm поможет вам с управлением приложений в Kubernetes - Helm Чарты помогают определять, устанавливать и обновлять приложения на Kubernetes.
-Он является инструментом для управления чартами и запускает приложения в Kubernetes.
+Helm - is a package manager for Kubernetes. Helm helps you manage apps in Kubernetes - Helm Charts help you identify, install, and update apps on Kubernetes. It is a chart management tool which also launches apps in Kubernetes.
 
-Чарт, в свою очередь, описывает необходимый набор данных для создания экземпляра приложения в кластере Kubernetes. Он может иметь вложенные чарты и использоваться
-как для описания полноценных сервисов, состоящих из множества зависимых ресурсов, так и для описания отдельных независимых составляющих.
+Chart describes the data set needed to create a copy of the app in the Kubernetes cluster. It can have embedded charts and is used both to describe full-fledged services consisting of many dependent resources, and to describe individual independent components.
 
-Чарты просто создавать, ими можно делиться и публиковать.
+Charts are easy to create, you can share and publish.
 
-Политика хелма такова - дать лучший способ найти, поделиться и использовать приложения построеные под Kubernetes.
+Helm's policy is to give the best way to find, share and use apps built under Kubernetes.
 
-> Официальная документация: https://helm.sh/
 
-### Предпосылки
+> Official documentation: https://helm.sh/
 
-> Если у вас присутствует настроенный Kubernetes, то можно пропустить этот шаг.
+### Background
 
-Для работы с хелмом у вас должен быть установлен `Minikube` и работающая утилита командной строки `kubectl`.
+> If you have customized Kubernetes, you can skip this step.
 
-Убедитесь, что у вас работает куб и есть namespace. Если нет, то создайте.
+To work with the helm, you must have a `Minikube` and a working command line utility `kubectl`.
+
+Make sure you have a cube running and have a namespace. If not, create.
 
 ```bash
 minikube start
 ```
 
 ```bash
-kubectl create "имя namespace"
+kubectl create "name namespace"
 ```
 
-Проверка сервиса:
+Check service:
 
 ```bash
 minikube service $SVC_NAME -n $NAMESPACE
 ```
 
-> Подробнее: https://github.com/pannoi/tpt/tree/master/kubernetes
+> more info: https://github.com/pannoi/tpt/tree/master/kubernetes
 
-### Установка
-> С помощью скрипта:
+### Installation
+> Using the script:
 
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -48,33 +46,32 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
-> С помощью Chocolatey (Windows)
+> Using Chocolatey (Windows)
 
 ```bash
 choco install kubernetes-helm
 ```
 
-Helm можно также устанавливать и на другие системы и другими способами:
+Helm can also be installed on other systems and other ways:
 
-> Официальная документация: https://helm.sh/docs/intro/install/
+> Official documentation: https://helm.sh/docs/intro/install/
 
-### Чарты
+### Charts
 
-Еще раз, чарт - это коллекция файлов, которые описывают связанный набор ресурсов Kubernetes.
-В большинстве своем чарты состоят из коллекции `YAML` файлов.
+Once again, chart - is a collection of files that describe a linked set of Kubernetes resources. Most of the charts consist of a collection of `YAML` files.
 
-Создать чарт:
+Create chart:
 
 ```bash
-helm create "имя"
+helm create "name"
 ```
 
-Запустить чарт:
+Start the chart:
 
 ```bash
 helm install $CHART_NAME $PATH/TO/HELM --namespace=$NAMESPACE_NAME
 ```
 
-> Работа с чартами (коллекцией `YAML` файлов) в Helm и более подробная документация с примерами: https://helm.sh/docs/topics/charts/
+> Dealing with charts (`YAML` files collection) in Helm and more detailed documentation with examples: https://helm.sh/docs/topics/charts/
 
-> Полезным может оказаться: https://www.youtube.com/watch?v=Zzwq9FmZdsU - здесь привидены примеры построения чартов
+> It may be useful: https://www.youtube.com/watch?v=Zzwq9FmZdsU - here are the examples of chart-building

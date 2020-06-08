@@ -1,76 +1,77 @@
 # Molecule
 
-## Инфо
+## Info
 
-Модульное тестирование в Ansible является ключом к тому, чтобы убедиться, что роли работают должным образом. Molecule упрощает этот процесс, позволяя указывать сценарии, тестирующие роли в различных средах. 
+Modular testing at Ansible is the key to making sure the roles work properly. Molecule simplifies this process by allowing you to specify scenarios that test roles in different environments.
 
-Используя Ansible изнутри, Molecule выгружает роли поставщику, который развертывает роль в сконфигурированной среде и вызывает верификатор (например, Testinfra) для проверки дрейфа конфигурации. Это гарантирует, что ваша роль внесла все ожидаемые изменения в среду в этом конкретном сценарии.
+Using Ansible from within, Molecule unloads roles to a vendor that deploys a role in a configured environment and calls a verifier (such as Testinfra) to check the drift of the configuration. This ensures that your role has made all the expected changes to the environment in this particular scenario.
 
-> Официальная документация https://molecule.readthedocs.io/en/latest/#
 
-> Для работы используйте:
+> 
+Official documentation 
+https://molecule.readthedocs.io/en/latest/#
+
+> Use for work:
 molecule==2.20
 ansible==2.7
 
-## Подготовка среды
+## Preparing the environment
 
-Обновление обеспечит включение в ваш репозиторий последней версии пакета python-pip, который установит pip и Python.
+The update will ensure that the latest version of the python-pip package, which will install pip and Python, is included in your repository.
 
 ```bash
 Sudo apt-get update
 ``` 
 
-pip будет использоваться для создания виртуальной среды и установки дополнительных пакетов. 
+pip will be used to create a virtual environment and install additional packages.
 
 ```bash
 sudo apt-get install -y python-pip
 ```
 
-Использование pip для установки модуля Python + virtualenv:
+Using pip to install the Python module and virtualenv:
 
 ```bash
 python -m pip install virtualenv
 ```
 
-Создание и активирование виртуальной среды:
+Creating and activating a virtual environment:
 ```bash
 python -m virtualenv env_name
 ```
 
-Активируйте его, чтобы убедиться, что ваши действия ограничены этой средой:
+Activate it to make sure your actions are limited to this environment:
 ```bash
 source env_name/bin/activate
 ```
 
-Установка molecule и docker с помощью pip:
+Install molecule and docker with pip:
 ```bash
 python -m pip install molecule docker
 ```
 
-## Создание роли в Molecule
+## Creating a role in Molecule
 ```bash
 molecule init role -r role-name -d docker
 ```
-Флаг -r указывает имя роли, в то время как -d указывает драйвер, который предоставляет хосты для Molecule для использования в тестировании.
+The flag-r indicates the name of the role, while -d indicates the driver that provides hosts for Molecule for use in testing.
 
-Чтобы перейти в каталог созданной роли, нужно выполнить следующую команду:
-```bash
+To go to the directory of the created role, you need to run the next command:```bash
 cd role-name
 ```
 
-## Файл конфигурации molecule.yml
+## Configuration file molecule.yml
 
-Перед началом теста Molecule проверяет конфигурационный файл molecule.yml, чтобы убедиться, что все в порядке. Он также печатает эту тестовую матрицу, которая определяет порядок тестовых действий.
-Тестовую матрицу можно посмотреть в файле molecule.yml, который по умолчанию хранится тут:
+Before the test starts, Molecule checks the molecule.yml configuration file to make sure everything is in right order. It also prints this test matrix, which determines how the test actions are taken. The test matrix can be seen in the molecule.yml file, which is stored here by default:
 > /home/username/role-name/molecule/default/molecule.yml
 
-## Тестирование роли
+## Role test
 
-Проверьте роль по умолчанию, чтобы проверить, правильно ли настроена Молекула:
+Check the default role to see if the Molecule is set up correctly:
 ```bash
 molecule test
 ```
-Вывод при тестировании выглядит следующим образом:
+The conclusion for testing looks like this:
 ```bash
 Output
 --> Validating schema /home/username/role-name/molecule/default/molecule.yml.

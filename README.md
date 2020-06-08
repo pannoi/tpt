@@ -1,5 +1,5 @@
-# Описание
+# Description
 
-Внутри каждого модуля вы можете найти отдельный ```README.md``` в котором будет более подробоная информация по отдельному модулю.
+Inside each module, you can find a separate  ```README.md``` in which there will be more fragmented information on a separate module. 
 
-Совет, если какой-то информации не дсоатет или что-то не понятно, можете сообощить об этом в ```Discord``` или сделать Pull Request в ```GitHub``` на обновление какой-то документации для ваших однокурсников
+Advice, if some information is not enough or something is not clear, you can report it in ```Discord``` or make a Pull Request in ```GitHub``` to update some documentation for your classmates
