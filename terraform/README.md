@@ -1,16 +1,17 @@
 # Terraform 
 
-## Инфо
+## Info
 
-Terraform – это инструмент от компании Hashicorp, помогающий декларативно управлять инфраструктрой. В данном случае не приходится вручную создавать инстансы, сети и т.д. в консоли вашего облачного провайдера; достаточно написать конфигурацию, в которой будет изложено, как вы видите вашу будущую инфраструктуру. Такая конфигурация создается в человеко-читаемом текстовом формате. Если вы хотите изменить вашу инфраструктуру, то редактируете конфигурацию и запускаете terraform apply. Terraform направит вызовы API к вашему облачному провайдеру, чтобы привести инфраструктуру в соответствие с конфигурацией, указанной в этом файле.
+Terraform –it is a tool from Hashicorp that helps to manage the infrastructure declaratively. In this case, you don't have to manually create instances, networks, etc. in your cloud provider's console; just write a configuration that tells you how you see your future infrastructure. This configuration is created in a human-readable text format. If you want to change your infrastructure, edit the configuration and launch terraform application. Terraform will send API calls to your cloud provider to align the infrastructure with the configuration in this file.
 
-Если перенести управление инфраструктурой в текстовые файлы, то открывается возможность вооружиться всеми излюбленными инструментами для управления исходным кодом и процессами, после чего переориентируем их для работы с инфраструктурой. Теперь инфраструктура подчиняется системам контроля версий (git), точно как исходный код, ее можно точно так же рецензировать или откатывать к более раннему состоянию, если что-нибудь пойдет неправильно.
+If you move infrastructure management to text files, you can arm yourself with all your favorite tools for managing the source code and processes, and then refocus them to work with the infrastructure. The infrastructure is now subject to git systems, just like the source code, and can be similarly criticized or rolled back to an earlier state if something goes wrong.
 
-> Официальная документация: https://www.terraform.io/docs/index.html
 
-## Установка
+> Official documentation: https://www.terraform.io/docs/index.html
 
-Вам нужно установить terraform [official provider](https://www.terraform.io/), сейчас мы испольузем версию: `terraform version == v0.11.11`
+## Installation
+
+You need to install terraform [official provider](https://www.terraform.io/), сnow we're going to use the version: `terraform version == v0.11.11`
 
 Windows
 
@@ -22,31 +23,29 @@ Linux
 1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip);
 2. Move extracted file to `/usr/bin`
 
-## Аутентификация
+## Authentication
 
-Для того, чтобы аутентифицроваться в облаке, с помощью terraform, вам нужно использовать аутентификационный конфиг.
+In order to authenticate in the cloud, with terraform, you need to use an authentication config.
 
     ```bash
     az login
     ```
 
-## Инициализация
+## Initialization
 
-Инциализационный процесс запустит установка зависмостей и модулей, которые вы используете в скрипте
-
+The incision process will start installing the hangs and modules that you use in the script
 ```bash
 terraform init
 ```
 
-## Сконфигурируйте перменные
+## Configure the variables
 
-Все переменные храняться в ```variables.tf```, вы можете их подстроить под ваш deployment
+All variables are stored in  ```variables.tf```, you can adjust them to for  deployment
 
 
-## Просмотр статуса
+## Checking status
 
-Terraform при запуске создает файл ```*.tfstate``` в которым храняться информация о состоянии инфраструктуры. Используя его вы можете посмтроеть статус инфраструктуры
-
+Terraform creates at the beginning a file called ```*.tfstate``` that stores information about the state of the infrastructure. Using it, you can build up the status of the infrastructure
 - Detailed view
 
   ```bash
@@ -59,17 +58,17 @@ Terraform при запуске создает файл ```*.tfstate``` в ко�
   terraform state list
   ```
 
-## Планирование 
+## Planning 
 
-Перед тем как запустить скрипт, лучше убедиться, какие ресурсы будут созданы/изменены/удалены. Для этого воспольузетесь командой и посмотрите, как использование скрипта изменит текущую инфраструктуру
+Before you start the script, it's best to see what resources are created/changed/removed. To do this, take advantage of the team and see how the use of the script will change the current infrastructure
 
     ```bash
     terraform plan
     ```
 
-## Применение
+## Application
 
-После того как вы убедились, что деплоеймент является валидным, вы можете запустить скрипт.
+Once you've seen that the depot is valid, you can run the script.
 
 
     ```bash
@@ -81,20 +80,20 @@ Terraform при запуске создает файл ```*.tfstate``` в ко�
     terraform apply -auto-approve
     ```
 
-## Выводы
+## Conclusions
 
-Внутри деплоймента вы можете конфигурировать выводы, например от ресурсов, которые будут созданые, с использованием генератора (например resource_id)
+Inside the platform, you can configure conclusions, for example, from the resources that will be created using a generator (e.g. resource_id)
 
 ```bash
 terraform output
 ```
 
-## Уничтожение 
+## Destruction 
 
-Если вам нужно удалить инфраструктуру, которую вы разворачивали этим скриптом, запустите команду:
+If you want to remove the infrastructure you've unwrapped with this script, start the command:
 
 ```bash
 terraform destroy
 ```
 
-> P.S. Используется *.tfstate файл, убедитесь, что он существует
+> P.S. Used by the z.tfstate file, make sure it exists
