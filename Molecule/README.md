@@ -1,76 +1,76 @@
 # Molecule
 
-## Инфо
+## Info
 
-Модульное тестирование в Ansible является ключом к тому, чтобы убедиться, что роли работают должным образом. Molecule упрощает этот процесс, позволяя указывать сценарии, тестирующие роли в различных средах. 
+Modulaarne testimine on Ansible on võti veendumaks, et rollid toimivad korralikult. Molekul lihtsustab seda protsessi, võimaldades teil määrata stsenaariumid, mis testima rolle erinevates keskkondades. 
 
-Используя Ansible изнутри, Molecule выгружает роли поставщику, который развертывает роль в сконфигурированной среде и вызывает верификатор (например, Testinfra) для проверки дрейфа конфигурации. Это гарантирует, что ваша роль внесла все ожидаемые изменения в среду в этом конкретном сценарии.
+Kasutades Ansible sees, molekuli eemaldab rollide hankija, mis juurutab rolli konfigureeritud keskkonnas ja kutsub kontrollija (nt Testinfra) kontrollida triivi konfiguratsiooni. See tagab, et teie roll on teinud kõik oodatud muudatused keskkonnas selles konkreetses stsenaariumis.
 
-> Официальная документация https://molecule.readthedocs.io/en/latest/#
+> Official documentation  https://molecule.readthedocs.io/en/latest/#
 
-> Для работы используйте:
-molecule==2.20
-ansible==2.7
+> Use for work:
+molecule 2.20
+ansible 2.7
 
-## Подготовка среды
+## Preparing the environment
 
-Обновление обеспечит включение в ваш репозиторий последней версии пакета python-pip, который установит pip и Python.
+See värskendus tagab, et uusim versioon Python-PIP pakett, mis installib PIP ja Python, sisaldub teie hoidla.
 
 ```bash
 Sudo apt-get update
 ``` 
 
-pip будет использоваться для создания виртуальной среды и установки дополнительных пакетов. 
+PIP kasutatakse luua virtuaalne keskkond ja paigaldada täiendavaid pakette. 
 
 ```bash
 sudo apt-get install -y python-pip
 ```
 
-Использование pip для установки модуля Python + virtualenv:
+Kasutades PIP paigaldada Python moodul ja virtualenv:
 
 ```bash
 python -m pip install virtualenv
 ```
 
-Создание и активирование виртуальной среды:
+Virtuaalkeskkonna loomine ja aktiveerimine:
 ```bash
-python -m virtualenv env_name
+python -m virtualenv
 ```
 
-Активируйте его, чтобы убедиться, что ваши действия ограничены этой средой:
+Aktiveerige see veendumaks, et teie tegevus piirdub selle keskkonnaga:
 ```bash
-source env_name/bin/activate
+source my_env/bin/activate
 ```
 
-Установка molecule и docker с помощью pip:
+Install molecule and docker with pip:
 ```bash
 python -m pip install molecule docker
 ```
 
-## Создание роли в Molecule
+## Creating a role in Molecule
 ```bash
 molecule init role -r role-name -d docker
 ```
-Флаг -r указывает имя роли, в то время как -d указывает драйвер, который предоставляет хосты для Molecule для использования в тестировании.
+Lipp r näitab rolli nime, kuigi-d näitab draiverit, mis pakub hosts molekuli kasutamiseks testimiseks.
 
-Чтобы перейти в каталог созданной роли, нужно выполнить следующую команду:
+Loodud rolli kataloogi minna, peate käivitama järgmise käsu:
 ```bash
 cd role-name
 ```
 
-## Файл конфигурации molecule.yml
+## Configuration file molecule.yml
 
-Перед началом теста Molecule проверяет конфигурационный файл molecule.yml, чтобы убедиться, что все в порядке. Он также печатает эту тестовую матрицу, которая определяет порядок тестовых действий.
-Тестовую матрицу можно посмотреть в файле molecule.yml, который по умолчанию хранится тут:
+Enne testi algust kontrollib molekuli molekuli. YML konfiguratsioonifaili veendumaks, et kõik on õige  järjekorras. See prindib ka katsemaatriksi, mis määrab katsemeetmete võtmise viisi. Testmaatriksi võib näha molekuli. YML-failis, mida talletatakse siin vaikimisi:
+
 > /home/username/role-name/molecule/default/molecule.yml
 
-## Тестирование роли
+## Role test
 
-Проверьте роль по умолчанию, чтобы проверить, правильно ли настроена Молекула:
+Kontrollige vaikerolli, et näha, kas molekul on õigesti seadistatud:
 ```bash
 molecule test
 ```
-Вывод при тестировании выглядит следующим образом:
+Katsetamise järeldus näeb välja selline:
 ```bash
 Output
 --> Validating schema /home/username/role-name/molecule/default/molecule.yml.
