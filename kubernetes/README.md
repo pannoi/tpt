@@ -1,87 +1,83 @@
 ## Kubernetes
 
-### Инфо
+### Info
 
-Kubernetes или "k8s" - это инструмент, который позволяет решать множество вопросов по автоматизации и управлению вашей инфраструктурой.
-Это платформа для управления контейнерами и развертываемыми в них сервисами. Она упрощает настройку и автоматизацию.
-Как и в ситуации с Терраформом, здесь используются манифесты, где нужно будет просто описать как мы видим нашу будущую инфраструктуру, а уже kubernetes займется выполнением.
+Kubernetes or "k8s" is a tool that solves a lot of automation and management issues. It is a platform for managing containers and services deployed in them. It makes it easier to set up and automate. As in the Terraform situation, there are manifestos where we just need to describe how we see our future infrastructure, and kubernetes will be engaged in implementation.
 
-Для того, чтобы работать с k8s у нас есть консольная утилита `kubectl`, как раз которой мы будем отправлять наши `YAML` файлы.
+In order to work with k8s we have a kubectl console utility, just one that we will send our YAML files to. 
+The language settings here are declarative, where Kubernetes looks and compares the value of the files (which was what became). For example, if you've already described the manifesto and created 3 containers, and then changed and put the value 5, then it will just create and add 2 more. It will not re-create the infrastructure and rewrite these 3 containers with other new 5.
 
-Язык настройки здесь декларативный, где Kubernetes смотрит и сравнение значения файлов (что было, что стало). К примеру, если вы уже описали манифест и создали 3 контейнера, а затем изменили и поставили значение 5, то он просто создаст и добавит еще 2.
-Он не будет пересоздавать инфраструктуру и перезаписывать эти 3 контейнера другими новыми 5-ю.
 
-> Более подробная документация про `Kubernetes` на русском языке: https://kubernetes.io/ru/docs/concepts/overview/what-is-kubernetes/
+> For more information about Kubernetes in Russian: https://kubernetes.io/ru/docs/concepts/overview/what-is-kubernetes/
 
-### Архитектура и компоненты
+### Architecture and components
+> Link to official documentation in Russian: https://kubernetes.io/ru/docs/concepts/overview/components/
 
-> Ссылка на официальную документацию на русском языке: https://kubernetes.io/ru/docs/concepts/overview/components/
-
-### Установка на Windows 10
-Ссылка на документацию по установке: https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
-Возможные варианты для установки:
+### Installation on Windows 10
+Link to installation documentation: https://kubernetes.io/ru/docs/tasks/tools/install-minikube/ Possible options for installation:
 > Linux
 
 > macOS
 
 > Windows
 
-Установка приложения `Minikube` с помощью `Chocolatey` (запущенный с правами администратора):
+Installing an app `Minikube` with help  `Chocolatey` (launched with admin rights):
 ```bash
 choco install minikube
 ```
 
-Базовые команды для использования `Minikube`:
+Basic commands to use `Minikube`:
 ```bash
-minikube start # запустить кластер
+minikube start # run cluster
 ```
 
-*У вас запустится виртуальная машина в вашем гипервизоре (в моем случае - Hyper-V)*
+*You will start a virtual machine in your hyperviore (in my case - Hyper-V)*
 
 ```bash
-minikube status # проверить статус состояния кластера
-```
-
-```bash
-minikube stop # остановить работу кластера
+minikube status # check cluster status
 ```
 
 ```bash
-minikube delete # удалить кластер
+minikube stop # stop cluster work
 ```
 
-Установка утилиты `kubectl` с помощью `Chocolatey` (запущенный с правами администратора):
+```bash
+minikube delete # delete cluster
+```
+
+Install `kubectl` with help of `Chocolatey` (launched with admin rights):
 ```bash
 choco install kubernetes-cli
 ```
 
-> Далее нам нужно перенести `kubectl.exe` файл в папку `system32`.
+> Next we need to transfer the `kubectl.exe` file to the `system32` folder.
 
 
-Проверить установленную версию:
+Check the installed version:
 ```bash
 kubectl version --client
 ```
 
-### Работа с Kubernetes
-Теперь вы можете работать со своим кластером через CLI-инструмент `kubectl`.
+### Working with Kubernetes
+Now you can work with your cluster through the CLI tool `kubectl`.
 
-> Более подробная официальная информация: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
+> For more information: https://kubernetes.io/ru/docs/setup/learning-environment/minikube/#%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%BE%D0%BC
 
 #### Namespace
-После того, как вы запустили команду `minikube start` и виртуальная машина поднялась, можно переходить к создаю `namespace` и настройки `YAML` файлов.
+Once you've launched the minikube start command and the virtual machine has gone up, you can move on to creating namespace and setting up YAML files. 
 
-Почти все ресурсы Kubernetes'a (поды, сервисы и другие) находятся в так называемых пространствах имен - `namespace`.
+Almost all of Kubernetes' resources (pods, services, etc.) are in so-called namespace spaces. Name spaces are virtual clusters. 
 
-Пространства имён представляют собой виртуальные кластеры. Пространства имен - это способ разделения ресурсов кластера.
+Name spaces are a way of separating cluster resources.
 
-Используйте следующую команду, чтобы вывести список существующих пространств имён в кластере:
+Use the following command to list existing name spaces in the cluster:
+
 
 ```bash
 kubectl get namespace
 ```
 
-Далее, вам нужно создать `.yml` файл и описать `namespace`:
+Next, you need to create a `.yml` file and describe `namespace`:
 ```bash
 apiVersion: v1
 kind: Namespace
@@ -89,57 +85,59 @@ metadata:
   name: <insert-namespace-name-here>
 ```
 
-Создать `namespace`:
+Create `namespace`:
 
 ```bash
 kubectl create namespace "имя"
 ```
 
-Удалить `namespace`:
+Delete `namespace`:
 
 ```bash
 kubectl delete ns "имя"
 ```
 
-### Работа с остальными объектами
+### Dealing with other objects
 
-Точно также, как с пространством имен, можно работать и с другими ресурсами.
+Just like with the name space, you can work with other resources.
 
-Можно выводить информацию и удалять их.
+You can display and delete information.
 
-Вывести все:
+Bring it all out:
+
 
 ```bash
 kubectl get all
 ```
 
-Относительно пространства имен:
+Regarding the space of names:
 
 ```bash
 kubectl get all -n "namespace"
 ```
 
-Удалить:
+Remove:
 
 ```bash
 kubectl delete "что" "имя" -n "namespace"
 ```
 
-Посмотреть описание:
+See the description:
 
 ```bash
 kubectl describe "что" "имя" -n "namespace"
 ```
 
-> Официальная документация: 
+> Official documentation: 
 >> https://kubernetes.io/ru/docs/concepts/overview/working-with-objects/namespaces/
 >> https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
 
-#### Написание манифестов
+#### Writing manifestos
 
-Далее вы можете уже заняться описанием своего манифеста, где будут все нужные вам ресурсы.
+Next, you can already deal with the description of your manifesto, where all the resources you need will be.
 
-К примеру: pod, service, deployment.
+For example: pod, service, deployment.
+
 
 > Pod
 
@@ -147,8 +145,8 @@ kubectl describe "что" "имя" -n "namespace"
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "имя пода"
-  namespace: "имя namespace"
+  name: "pod name"
+  namespace: "name namespace"
 ```
 
 > Service
@@ -157,11 +155,11 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: "имя сервиса"
-  namespace: "имя namespace"
+  name: "service name"
+  namespace: "name namespace"
 ```
 
->> Официальная документация: https://kubernetes.io/docs/concepts/services-networking/service/
+>> official documantation: https://kubernetes.io/docs/concepts/services-networking/service/
 
 > Deployment
 
@@ -169,43 +167,43 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "имя deployment"
-  namespace: "имя namespace"
+  name: "name deployment"
+  namespace: "name namespace"
 ```
 
->> Официальная документация: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+>> official documantation: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
-> Более подробная информация для изучения конфигураций `YAML` файлов:
+> For more information to learn about YAML file configurations:
 >> https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/
 >> https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
-#### Проверка, применение и запуск
+#### Check, apply and run
 
-Примените ваши `YAML` файлы один за другим, с помощью следующей команды:
+Apply your YAML files one by one, with the next command:
 
 ```bash
-kubectl apply -f "имя манифест файла" (с расширением .yml)
+kubectl apply -f "name manifesto file" (forat .yml)
 ```
 
-Чтобы убедиться в наличии вашего сервиса среди остальных, введите команду:
+To make sure your service is available to the rest of us, enter the team:
 
 ```bash
 minikube service list
 ```
 
-Для проверки работоспособности сервиса, можете использовать следующую команду:
+To check the health of the service, you can use the next command:
 
 ```bash
-minikube service "имя сервиса" -n "имя namespace"
+minikube service "service name" -n "name namespace"
 ```
 
 #### Docker в Kubernetes
-Для работы с контейнерами в Kubernetes используется Docker. Для работы с докером в Windows можно использовать `Powershell`, где поддерживаются все те же команды по работе с контейнерами и образами докера посредством командной утилиты `Docker`.
+Kubernetes uses Docker to work with containers. You can use `Powershell` to work with the Docker in Windows, where you're supported by the same container and docker image commands using the Docker command utility. 
 
-Также, для работы с докером вы можете использовать DockerHub:
+You can also use DockerHub to work with a `docker`:
 
 > https://hub.docker.com/
 
-Пример процесса аутентификации на DockerHub c помощью CLI-команд:
+An example of the authentication process on DockerHub with CLI commands:
 
 > https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
