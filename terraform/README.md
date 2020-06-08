@@ -1,16 +1,16 @@
 # Terraform 
 
-## Инфо
+## Info
 
-Terraform – это инструмент от компании Hashicorp, помогающий декларативно управлять инфраструктрой. В данном случае не приходится вручную создавать инстансы, сети и т.д. в консоли вашего облачного провайдера; достаточно написать конфигурацию, в которой будет изложено, как вы видите вашу будущую инфраструктуру. Такая конфигурация создается в человеко-читаемом текстовом формате. Если вы хотите изменить вашу инфраструктуру, то редактируете конфигурацию и запускаете terraform apply. Terraform направит вызовы API к вашему облачному провайдеру, чтобы привести инфраструктуру в соответствие с конфигурацией, указанной в этом файле.
+Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
 
-Если перенести управление инфраструктурой в текстовые файлы, то открывается возможность вооружиться всеми излюбленными инструментами для управления исходным кодом и процессами, после чего переориентируем их для работы с инфраструктурой. Теперь инфраструктура подчиняется системам контроля версий (git), точно как исходный код, ее можно точно так же рецензировать или откатывать к более раннему состоянию, если что-нибудь пойдет неправильно.
+Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
 
-> Официальная документация: https://www.terraform.io/docs/index.html
+> Official documentation: https://www.terraform.io/docs/index.html
 
-## Установка
+## Installation
 
-Вам нужно установить terraform [official provider](https://www.terraform.io/), сейчас мы испольузем версию: `terraform version == v0.11.11`
+Teil on vaja paigaldada muutmis  terraform [official provider](https://www.terraform.io/), nüüd me kasutame versiooni: `terraform version == v0.11.11`
 
 Windows
 
@@ -22,30 +22,30 @@ Linux
 1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip);
 2. Move extracted file to `/usr/bin`
 
-## Аутентификация
+## Authentication
 
-Для того, чтобы аутентифицроваться в облаке, с помощью terraform, вам нужно использовать аутентификационный конфиг.
+Selleks, et autentida pilve, koos, on vaja kasutada autentimise kinnitamiseksg.
 
     ```bash
     az login
     ```
 
-## Инициализация
+## Initialization
 
-Инциализационный процесс запустит установка зависмостей и модулей, которые вы используете в скрипте
+Sisselõiked protsess hakkab paigaldus hangub ja moodulid, mida kasutada skripti
 
 ```bash
 terraform init
 ```
 
-## Сконфигурируйте перменные
+## Configure the variables
 
-Все переменные храняться в ```variables.tf```, вы можете их подстроить под ваш deployment
+Kõik muutujad talletatakse variables.tf, saate neid kohandada   juurutamine
 
 
-## Просмотр статуса
+## View status
 
-Terraform при запуске создает файл ```*.tfstate``` в которым храняться информация о состоянии инфраструктуры. Используя его вы можете посмтроеть статус инфраструктуры
+Terraform loobs  -i alguses faili nimega z. tfstate, mis talletab teavet taristu oleku kohta. Selle abil saate luua infrastruktuuri seisundi üksikasjalik vaade
 
 - Detailed view
 
@@ -59,17 +59,17 @@ Terraform при запуске создает файл ```*.tfstate``` в ко�
   terraform state list
   ```
 
-## Планирование 
+## Planning
 
-Перед тем как запустить скрипт, лучше убедиться, какие ресурсы будут созданы/изменены/удалены. Для этого воспольузетесь командой и посмотрите, как использование скрипта изменит текущую инфраструктуру
+Enne skripti alustamist on kõige parem näha, millised ressursid on loodud/muudetud/eemaldatud. Selleks kasutage meeskonda ja vaadake, kuidas skripti kasutamine muudab praeguse taristuse
 
     ```bash
     terraform plan
     ```
 
-## Применение
+## Application
 
-После того как вы убедились, что деплоеймент является валидным, вы можете запустить скрипт.
+Kui olete näinud, et hoidla on kehtiv, võite käivitada skripti.
 
 
     ```bash
@@ -81,20 +81,20 @@ Terraform при запуске создает файл ```*.tfstate``` в ко�
     terraform apply -auto-approve
     ```
 
-## Выводы
+## Conclusions
 
-Внутри деплоймента вы можете конфигурировать выводы, например от ресурсов, которые будут созданые, с использованием генератора (например resource_id)
+Platvormi sees saate konfigureerida järeldusi näiteks generaatori abil loodavate ressursside põhjal (nt resource_id)
 
 ```bash
 terraform output
 ```
 
-## Уничтожение 
+## Destruction
 
-Если вам нужно удалить инфраструктуру, которую вы разворачивали этим скриптом, запустите команду:
+Kui soovite eemaldada selle skriptiga lahtipakitud infrastruktuuri, käivitage:
 
 ```bash
 terraform destroy
 ```
 
-> P.S. Используется *.tfstate файл, убедитесь, что он существует
+> P.S. Kasutab *.tfstate faili, veenduge, et see on olemas
