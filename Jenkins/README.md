@@ -1,100 +1,107 @@
-# Terraform 
+# Jenkins
 
 ## Info
 
-Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
+Jenkins on Java avatud lähtekoodiga Tarkvarakeskus, mille eesmärk on tagada pideva tarkvara integreerimise protsess. Pidev integratsioon on tarkvaraarendusprotsess, mis hõlmab pidevalt töökoopiate ühendamist ühisele arendusreale ja püsiva automatiseeritud projekti loomist, et kiiresti tuvastada võimalikke vigu ja lahendada integratsiooniprobleeme. Jenkinsi linkimiseks GitHub ' i hoidlaga peate tegema järgmist.
 
-Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
 
-> Official documentation: https://www.terraform.io/docs/index.html
 
-## Installation
+## Jenkins Installation
+> Windows
 
-Teil on vaja paigaldada muutmis  terraform [official provider](https://www.terraform.io/), nüüd me kasutame versiooni: `terraform version == v0.11.11`
+Jenkins ' i installimiseks Windowsis peate installifaili alla laadima ametlikust saidilt.
+> https://www.jenkins.io/download/
 
-Windows
 
-1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_windows_amd64.zip);
-2. Move extracted .exe file to `C:\Windows\System32\`
 
-Linux
+## Plugin Installation
+Selleks, et installida vajalikud lisandmoodulid, peate minema:
+Manage Jenkins > Manage Plugins > Availabe
 
-1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip);
-2. Move extracted file to `/usr/bin`
+Siin on loend lisandmoodulite installimiseks saadaval
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/PluginsListJenkins.PNG)
 
-## Authentication
-
-Selleks, et autentida pilve, koos, on vaja kasutada autentimise kinnitamiseksg.
-
-    ```bash
-    az login
-    ```
-
-## Initialization
-
-Sisselõiked protsess hakkab paigaldus hangub ja moodulid, mida kasutada skripti
-
+Õige GITi tööks, veenduge, et teil on git arvutisse installitud, samuti ka järgmised pluginad Jenkins:
 ```bash
-terraform init
+Git client plugin
+#Utility plugin for Git support in Jenkins	
+	
+Git Pipeline for Blue Ocean
+#BlueOcean Git SCM pipeline creator
+
+Git plugin
+#This plugin integrates Git with Jenkins.
+	
+GIT server Plugin
+#Allows Jenkins to act as a Git server.
+	
+GitHub API Plugin
+#This plugin provides GitHub API for other plugins.
+	
+GitHub Branch Source Plugin
+#Multibranch projects and organization folders from GitHub. Maintained by CloudBees, Inc.
+	
+GitHub Pipeline for Blue Ocean
+#BlueOcean GitHub organization pipeline creator
+	
+GitHub plugin
+#This plugin integrates GitHub to Jenkins.
 ```
 
-## Configure the variables
-
-Kõik muutujad talletatakse variables.tf, saate neid kohandada   juurutamine
-
-
-## View status
-
-Terraform loobs  -i alguses faili nimega z. tfstate, mis talletab teavet taristu oleku kohta. Selle abil saate luua infrastruktuuri seisundi üksikasjalik vaade
-
-- Detailed view
-
-  ```bash
-  terraform show
-  ```
-
-- Simplified view
-
-  ```bash
-  terraform state list
-  ```
-
-## Planning
-
-Enne skripti alustamist on kõige parem näha, millised ressursid on loodud/muudetud/eemaldatud. Selleks kasutage meeskonda ja vaadake, kuidas skripti kasutamine muudab praeguse taristuse
-
-    ```bash
-    terraform plan
-    ```
-
-## Application
-
-Kui olete näinud, et hoidla on kehtiv, võite käivitada skripti.
-
-
-    ```bash
-    terraform apply
-    ```
-
-
-    ```bash
-    terraform apply -auto-approve
-    ```
-
-## Conclusions
-
-Platvormi sees saate konfigureerida järeldusi näiteks generaatori abil loodavate ressursside põhjal (nt resource_id)
-
+> Samuti tööks, on vaja plug-ins:
 ```bash
-terraform output
+Blue Ocean
+#BlueOcean Aggregator
+
+Docker plugin
+#This plugin integrates Jenkins with Docker
 ```
-
-## Destruction
-
-Kui soovite eemaldada selle skriptiga lahtipakitud infrastruktuuri, käivitage:
-
+## Project Creation
+Projekti loomiseks Jenkins ' is avalehel:
 ```bash
-terraform destroy
+New Item > Vali nimi ja vali tüüp Pipeline, pärast seda vajuta OK
 ```
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/CreateProjektJenkins.PNG)
 
-> P.S. Kasutab *.tfstate faili, veenduge, et see on olemas
+Seejärel valige jaotises konveieri jaotis järgmised suvandid:
+```bash
+Definition > Pipeline script from CSM
+ ```
+ ```bash 
+SCM > Git
+ ```
+  ```bash 
+Repository URL > link  to your repository in GitHub
+ ```
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ConnectGitRepToProjekt.PNG)
+
+Vajutage SAVE
+
+> Kui teil on tõrge, mis on seotud Git hoidla ühendus, veenduge, et teil on tee git. exe arvutis.
+```bash
+Failed to connect to repository :
+Error performing git command: 
+git.exe ls-remote -h https://github.com/username/projekt.git HEAD
+```
+Seadistamiseks peate minema:
+```bash
+Manage Jenkins > Global Tool Configuration > Git
+```
+Tee git käivitatava välja peate osutage tee git. exe arvutisse installitud. 
+> By Deffault - C:\Users\username\AppData\Local\Programs\Git\cmd\git.exe
+
+
+## Project Build
+
+
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektOnMainPageJenkins.PNG)
+Projekti koostamisekspeameklõpsama selle nimel. Projekti avamisaknas peame klõpsama nupul "ehitada nüüd", mis on vasakul menüüs.
+> P.s. Ehitada, peate looma ploki Jenkinsfile faili, mis tuleb talletada oma taotluse haru.
+
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildJenkins.PNG)
+
+Pärast edukat projektihoonet saab tulemust näha vasakul asuva menüü [ Open Blue Ocean ]klõpsamisega.
+
+![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildResult.PNG)
+
+Nagu te näete , tehti b uILD  edukalttäielikult
