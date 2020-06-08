@@ -1,5 +1,3 @@
-# Описание
+# Description
 
-Внутри каждого модуля вы можете найти отдельный ```README.md``` в котором будет более подробоная информация по отдельному модулю.
-
-Совет, если какой-то информации не дсоатет или что-то не понятно, можете сообощить об этом в ```Discord``` или сделать Pull Request в ```GitHub``` на обновление какой-то документации для ваших однокурсников
+Iga mooduli sees võite leida eraldi README.md, kus on eraldi moodulis killustatud teavet. Nõuanne, kui osa teabest ei piisa  või midagi ei ole selge, saate sellest teatada Discord või teha pull taotluse github uuendada mõned dokumendid oma klassikaaslased
