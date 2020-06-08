@@ -1,111 +1,100 @@
-# Jenkins
+# Terraform 
 
-## Инфо
+## Info
 
-Jenkins - программная система с открытым исходным кодом на Java, предназначенная для обеспечения процесса непрерывной интеграции программного обеспечения.
-Непрерывная интеграция- это процесс разработки программного обеспечения, смысл которого заключается в постоянном соединении рабочих копий в общую линию разработки, и выполнении постоянных автоматизированных сборок проекта для быстрого выявления возможных ошибок и решения интеграционных проблем.
+Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
 
-Для того, чтобы связать Jenkins с GitHub репозиторием, необходимо выполнить следующие действия:
+Terraform – see on vahend Hashicorp, mis aitab hallata infrastruktuuri deklaratiivselt. Sellisel juhul ei pea te pilveteenuse pakkuja konsoolis käsitsi looma eksemplare, võrke jne. lihtsalt kirjuta konfiguratsioon, mis ütleb teile, kuidas sa näed oma tulevase infrastruktuuri. See konfiguratsioon on loodud inimloetavas tekstivormingus. Kui soovite oma infrastruktuuri muuta, redigeerige konfiguratsiooni ja käivitage rakendus. Terraform saadab API kõned pilve pakkuja ühtlustada infrastruktuuri konfiguratsiooni selles failis.
 
-## Установка Jenkins
-> Windows
+> Official documentation: https://www.terraform.io/docs/index.html
 
-Дла того, чтобы установить Jenkins на Windows, нужно скачать установочный файл с официального сайта.
-> https://www.jenkins.io/download/
+## Installation
 
+Teil on vaja paigaldada muutmis  terraform [official provider](https://www.terraform.io/), nüüd me kasutame versiooni: `terraform version == v0.11.11`
 
+Windows
 
-## Установка плагинов
-Для установки необходимых плагинов необходимо пройти в:
-Manage Jenkins > Manage Plugins > Availabe
+1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_windows_amd64.zip);
+2. Move extracted .exe file to `C:\Windows\System32\`
 
-Перед вами появляется список доступных для установки плагинов
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/PluginsListJenkins.PNG)
+Linux
 
-Для корректной работы с Git убедитесь, что у вас установлен Git на компьютер, а так же установлены следующие плагины в Jenkins:
+1. Download Terraform `.zip` and extract it Win 10 from [here](https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip);
+2. Move extracted file to `/usr/bin`
+
+## Authentication
+
+Selleks, et autentida pilve, koos, on vaja kasutada autentimise kinnitamiseksg.
+
+    ```bash
+    az login
+    ```
+
+## Initialization
+
+Sisselõiked protsess hakkab paigaldus hangub ja moodulid, mida kasutada skripti
+
 ```bash
-Git client plugin
-#Utility plugin for Git support in Jenkins	
-	
-Git Pipeline for Blue Ocean
-#BlueOcean Git SCM pipeline creator
-
-Git plugin
-#This plugin integrates Git with Jenkins.
-	
-GIT server Plugin
-#Allows Jenkins to act as a Git server.
-	
-GitHub API Plugin
-#This plugin provides GitHub API for other plugins.
-	
-GitHub Branch Source Plugin
-#Multibranch projects and organization folders from GitHub. Maintained by CloudBees, Inc.
-	
-GitHub Pipeline for Blue Ocean
-#BlueOcean GitHub organization pipeline creator
-	
-GitHub plugin
-#This plugin integrates GitHub to Jenkins.
+terraform init
 ```
 
-> Так же для работы, нам понадобятся плагины:
-```bash
-Blue Ocean
-#BlueOcean Aggregator
+## Configure the variables
 
-Docker plugin
-#This plugin integrates Jenkins with Docker
+Kõik muutujad talletatakse variables.tf, saate neid kohandada   juurutamine
+
+
+## View status
+
+Terraform loobs  -i alguses faili nimega z. tfstate, mis talletab teavet taristu oleku kohta. Selle abil saate luua infrastruktuuri seisundi üksikasjalik vaade
+
+- Detailed view
+
+  ```bash
+  terraform show
+  ```
+
+- Simplified view
+
+  ```bash
+  terraform state list
+  ```
+
+## Planning
+
+Enne skripti alustamist on kõige parem näha, millised ressursid on loodud/muudetud/eemaldatud. Selleks kasutage meeskonda ja vaadake, kuidas skripti kasutamine muudab praeguse taristuse
+
+    ```bash
+    terraform plan
+    ```
+
+## Application
+
+Kui olete näinud, et hoidla on kehtiv, võite käivitada skripti.
+
+
+    ```bash
+    terraform apply
+    ```
+
+
+    ```bash
+    terraform apply -auto-approve
+    ```
+
+## Conclusions
+
+Platvormi sees saate konfigureerida järeldusi näiteks generaatori abil loodavate ressursside põhjal (nt resource_id)
+
+```bash
+terraform output
 ```
-## Создание проекта
-Для создания проекта в Jenkins, на главной станице пройдите в:
+
+## Destruction
+
+Kui soovite eemaldada selle skriptiga lahtipakitud infrastruktuuri, käivitage:
+
 ```bash
-New Item > Укажите имя и выберите тип Pipeline, после чего снизу нажимаем OK
+terraform destroy
 ```
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/CreateProjektJenkins.PNG)
 
-После этого, ниже в разделе Pipeline, выбираем следующие параметры:
-```bash
-Definition > Pipeline script from CSM
- ```
- ```bash 
-SCM > Git
- ```
-  ```bash 
-Repository URL > ссылка на ваш репозиторий на GitHub
- ```
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ConnectGitRepToProjekt.PNG)
-
-Для завершения нажимаем SAVE
-
-> При возникновении ошибки, связанной с подключением к Git репозиторию, убедитесь что у вас указан путь к git.exe на вашем компьютере.
-```bash
-Failed to connect to repository :
-Error performing git command: 
-git.exe ls-remote -h https://github.com/username/projekt.git HEAD
-```
-Для настройки, нужно пройти в:
-```bash
-Manage Jenkins > Global Tool Configuration > Git
-```
-В поле Path to Git executable нужно указать путь до git.exe, установленном на вашем компьютере. 
-> By Deffault - C:\Users\username\AppData\Local\Programs\Git\cmd\git.exe
-
-
-## Билд проекта
-
-Поле того как мы создали проект, он отобразится на главной странице в Jenkins
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektOnMainPageJenkins.PNG)
-
-Чтобы произвести билд проекта, нам нужно нажать на его название. В открывшемся окне проекта, нам необходимо нажать на кнопку [ Build Now ], которая находится в меню слева.
-> P.s. Для проведения билда, нужно создать блок в файле Jenkinsfile, который должен храниться в ветке вашего приложения.
-
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildJenkins.PNG)
-
-После успешного билда проекта, результат можно посмотреть, нажав [ Open Blue Ocean ] в меню слева.
-
-![Image of collaborator](https://github.com/pannoi/tpt/blob/master/Jenkins/images/ProjektBuildResult.PNG)
-
-Как можно видеть, билд прошел успешно
-
-> Так же, при возникновении ошибок вам будет описано, в чем у вас заключается проблема.
+> P.S. Kasutab *.tfstate faili, veenduge, et see on olemas
