@@ -1,43 +1,42 @@
 # Ansible
 
-## Инфо
+## Info
+Ansible on väga paindlik ja lihtne vahend kirjutamise skripte automatioon stsenaariumid  mis tahes keerukust. Saate kirjeldada    seda , Kuidas  lihtne arendaja keskkonnas nii keeruline suur multi-keskkond projekti (dev/etapp/prod).
 
-Ansible это очень гибкий и легкий инструмент для написания сценариев автоматизации любой сложности. Вы можете описать в нем как простое окружение разработчика так сложную структуру крупного проекта с несколькими окружениями (dev/stage/prod).
-
-> Официальная документация: http://docs.ansible.com/
-# Установка
+> Official documentation: http://docs.ansible.com/
+# Install
 
 > Ubuntu
 
-Для начала нужно обновить список пакетов для установки, чтобы гарантировано получить последнюю версию нужного нам Ansible
+Esmalt peate värskendama paketid, mis on garanteeritud saada uusim versioon on mõistlik me vajame
 ```bash
 sudo apt update
 ```
-Так же стоит обновить уже установленные пакеты
+Samuti tasub ajakohastada paketid, mis on juba paigaldatud
 ```bash
 sudo apt upgrade
 ```
 
-Теперь установим Ansible
+Nüüd paigaldage Ansible
 ```bash
 sudo apt install ansible
 ```
-Для проверки того, что Ansible был установлен, выполните следующую команду:
+Veendumaks, et Ansible on installitud, järgige järgmist käsku:
 ```bash
 ansible --versioon
 ```
 
-Все блоки в Ansible, будь то плейбуки или варсы (переменные), начинаются с того, что мы прописываем в первую строку файла:
+Kõik plokid Ansible, olgu see playbooks või vars (muutujad), alustada, mida me ette kirjutada esimene rida faili:
 ```bash
 ---
 ```
-# Плейбуки
+# Playbooks
 
-Ansible playbooks — это способ отправки команд на удалённые компьютеры с помощью скриптов. Вместо того, чтобы индивидуально использовать команды Ansible для удалённой настройки компьютеров из командной строки, вы можете настраивать целые сложные среды, передавая скрипт одной или нескольким системам.
+Mõistlik mänguraamatud on võimalus saata käske kaugarvutitega, kasutades skripte. Asemel individuaalselt kasutades Ansible käske eemalt kohandada arvuteid käsurealt, saate kohandada kogu keerukaid keskkondades läbides skripti ühte või mitut süsteemi.
 
-Расширением файла, будь то плейбук / таски / переменные (vars), является .yml
+File extension, whether it's playbook/tasks/variable (vars), is .yml
 
-> Структура блока в файле playbook.yml
+> Block structure in file  playbook.yml
 ```bash
 ---
 - name: Install Packages
@@ -47,12 +46,11 @@ Ansible playbooks — это способ отправки команд на у�
     - role: tpt
 ```
 
-## Таски
+## Tasks
 
-Ansible tasks - собственно это задачи, которые будут исполняться Ansibl-ом, по типу установки пакетов, запуска сервисов, распаковки, копирования и тому подобного.
-С примером тасков можно ознакомится в разделе roles/tpt/tasks в данной документации.
+Mõistlikud ülesanded-on ülesanded, mida teostatakse Ansible, paigaldamise tüüp paketid, käivitusteenused, lahtipakkimine, kopeerimine ja nagu. Nende dokumentide jaotisest rollidest/TPT/Tasks leiate näiteid.
 
-Пример блока в task на установку пакетов, записанных в переменную packages
+Näide ploki ülesanne installida paketid, mis on salvestatud muutuja paketid
 ```bash
     - name: Install apcahe+php modules 
       apt:
@@ -62,12 +60,12 @@ Ansible tasks - собственно это задачи, которые буд�
       with_items: "{{ packages }}"
 ```
 
-> Ознакомиться со всеми модулями можно тут: https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
+> Saate lugeda kõiki mooduleid siin: https://docs.ansible.com/ansible/2.3/list_of_all_modules.html
 
-## Роли
+## Roles
 
-Это способ сгруппировать несколько задач в один контейнер, чтобы эффективно автоматизировать работу с помощью понятной структуры каталогов.
-Структура роли:
+See on võimalus rühmitada mitu ülesannet üheks Mahutiks, et tõhusalt automatiseerida oma tööd arusaadava kataloogistruktuuri abil.
+Rolli struktuur:
 ```bash
 /home/user/ansible:
     playbook.yml
@@ -78,12 +76,4 @@ Ansible tasks - собственно это задачи, которые буд�
             vars:
                 main.yml
 ```
->В папке vars, в файле main.yml можно указать переменные, которые могут хранить в себе информацию, по типу списка приложений, текста и т.п.
-/vars/main.yml
-С примером переменных можно ознакомиться в разделе roles/tpt/vars в данной документации.
-
-
- 
-
-
-
+Kaustas vars (Main. YML) saate määrata muutujad, mis võivad talletada teavet (nt rakenduste loend, tekst jne)/vars/Main.YML, näiteks muutujate kohta leiate selles dokumentatsioonis rolle jaotisest/TPT/vars.

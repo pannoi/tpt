@@ -1,25 +1,25 @@
 # Git
 
-## Инфо
+## Info
 
-Система контроля версий или VCS может значительно облегчить работу разработчиков, пытающихся проанализировать изменения и вклады в общий код. Проще говоря, система контроля версий — это ключевой элемент в системе управления настройками программного обеспечения, которые отвечают потребностям проекта. VCS дают возможность назначать для определенных изменений/ревизий/обновлений буквенные или числовые значения. Также могут предоставить информацию о временных метках и идентификаторе человека внесшего изменения. 
+Versioonikontrollsüsteem või VCS võib teha palju lihtsamaks arendajad, kes üritavad analüüsida muudatusi ja panust ühiskasutusega koodi. Lihtsalt ütles, versioon kontrolli süsteem on võtmeelement tarkvara seadete juhtimissüsteemi, mis vastab projekti vajadustele. VCS võimaldab teil määrata tähed või numbrilised väärtused teatud muudatused/parandused/uuendused. Samuti saate anda teavet muudatuse teinud isiku ajutiste siltide ja ID kohta.
 
-> Подробнее можете прочитать здесь:
+> Read more here:
 https://git-scm.com/book/ru/v2/%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5-%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B-Git
 
 ## Workflow
 
-В Git вы можете найти общую информацию по поводу утилит и методов с примерами которые будут использоваться в курсе.
+Git, leiad üldine teave kommunaalteenuste ja meetodite näited tmüts  kasutatakse kursis.
 
-## Обновление репозитория студентами
+## Updating the repository by students
 
-Если вы хотите что-то обновить внутри моего репозитория, то нажимаете на ```fork``` и далаете Pull Request в ```master```, после чего я проверю и могу сделать ```merge``` и репозиторий обновиться. Пересмотр и обновление документации приветсвуется.
+Kui soovite värskendada midagi minu hoidla sees   ,  siis  klõpsa        kahvli ja tee pull taotluse Master, pärast mida ma kontrollin ja saab teha Merge ja hoidla uuendab. Dokumentatsiooni läbivaatamine ja uuendamine on teretulnud.
 
 ![Image of pull request](https://github.com/pannoi/tpt/blob/master/git/images/pullRequest.png)
 
-## Репозитории студентов
+## Student repositories
 
-Студенты должны создать ```Private``` репозиторий, после чего сделать чего добавть меня ```https://github.com/pannoi``` как collaborator.
+Õpilased peaksid looma Private Repository, ja  seejärel lisage mullehttps://github.com/pannoi as a collaborator.
 
 > Repository -> Settings -> Manage Access -> Invite collaborator -> @pannoi
 

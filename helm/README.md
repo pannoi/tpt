@@ -1,27 +1,24 @@
 ## Helm
 
-### Инфо
+### Info
 
-Helm - это пакетный менеджер для Kubernetes.
-Helm поможет вам с управлением приложений в Kubernetes - Helm Чарты помогают определять, устанавливать и обновлять приложения на Kubernetes.
+Helm-on paketi Manager for Kubernetes. Helm aitab teil hallata rakendusi Kubernetes-helm diagrammid aitavad teil tuvastada, installida ja värskendada rakendusi Kubernetes. See on diagrammi haldamise vahend,   mis käivitab ka  rakendusi Kubernetes.
 Он является инструментом для управления чартами и запускает приложения в Kubernetes.
 
-Чарт, в свою очередь, описывает необходимый набор данных для создания экземпляра приложения в кластере Kubernetes. Он может иметь вложенные чарты и использоваться
-как для описания полноценных сервисов, состоящих из множества зависимых ресурсов, так и для описания отдельных независимых составляющих.
+Diagramm kirjeldab andmekomplekti, mis on vajalik rakenduse koopia loomiseks klastri Kubernetes. See võib olla manustatud diagrammid ja kasutatakse nii kirjeldada täiskohaga teenuseid, mis koosnevad paljudest sõltuvad ressursid, ja kirjeldada üksikuid iseseisvaid komponente.
 
-Чарты просто создавать, ими можно делиться и публиковать.
+Diagramme on lihtne luua, saate ühiskasutusse anda ja avaldada.
 
-Политика хелма такова - дать лучший способ найти, поделиться и использовать приложения построеные под Kubernetes.
+Helmi poliitika on anda parim viis Kubernetes alusel loodud rakenduste leidmiseks, jagamiseks ja kasutamiseks.
 
-> Официальная документация: https://helm.sh/
+> Official documentation: https://helm.sh/
 
-### Предпосылки
+### Background
 
-> Если у вас присутствует настроенный Kubernetes, то можно пропустить этот шаг.
+> Kui olete kohandatud Kubernetes, võite selle sammu vahele jätta.
+Selleks, et töötada helmiga, peab teil olema Minikube ja töökäsuliini utiliit kubectl.
+Veenduge, et teil on kuubik ja teil on nimeruumi. Kui ei, siis loo.
 
-Для работы с хелмом у вас должен быть установлен `Minikube` и работающая утилита командной строки `kubectl`.
-
-Убедитесь, что у вас работает куб и есть namespace. Если нет, то создайте.
 
 ```bash
 minikube start
@@ -31,7 +28,7 @@ minikube start
 kubectl create "имя namespace"
 ```
 
-Проверка сервиса:
+Check service:
 
 ```bash
 minikube service $SVC_NAME -n $NAMESPACE
@@ -39,8 +36,8 @@ minikube service $SVC_NAME -n $NAMESPACE
 
 > Подробнее: https://github.com/pannoi/tpt/tree/master/kubernetes
 
-### Установка
-> С помощью скрипта:
+### Installation
+> Skripti kasutamine:
 
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
@@ -54,27 +51,27 @@ chmod 700 get_helm.sh
 choco install kubernetes-helm
 ```
 
-Helm можно также устанавливать и на другие системы и другими способами:
+Helmi saab paigaldada ka teistesse süsteemidesse ja muul viisil:
 
-> Официальная документация: https://helm.sh/docs/intro/install/
+> Official documentation: https://helm.sh/docs/intro/install/
 
-### Чарты
+### Charts
 
-Еще раз, чарт - это коллекция файлов, которые описывают связанный набор ресурсов Kubernetes.
-В большинстве своем чарты состоят из коллекции `YAML` файлов.
+Jällegi diagramm-on kogum faile, mis kirjeldavad lingitud komplekti Kubernetes ressursse. Enamik diagramme koosneb YAML failide kogumist.
 
-Создать чарт:
+Charti loomine:
+
 
 ```bash
 helm create "имя"
 ```
 
-Запустить чарт:
+Käivitage diagramm:
 
 ```bash
 helm install $CHART_NAME $PATH/TO/HELM --namespace=$NAMESPACE_NAME
 ```
 
-> Работа с чартами (коллекцией `YAML` файлов) в Helm и более подробная документация с примерами: https://helm.sh/docs/topics/charts/
+> Tegelemine graafikuid (YAML failide kogumine) helm ja üksikasjalikuma dokumentatsiooni näiteid:  https://helm.sh/docs/topics/charts/
 
-> Полезным может оказаться: https://www.youtube.com/watch?v=Zzwq9FmZdsU - здесь привидены примеры построения чартов
+> See võib olla kasulik: https://www.youtube.com/watch?v=Zzwq9FmZdsU - Siin on näited diagrammiehituse

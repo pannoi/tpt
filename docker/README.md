@@ -1,42 +1,39 @@
 ## Docker
 
-### Инфо
+### Info
 
-Docker - это инструмент, который максимально просто позволяет автоматизировать развертывание приложений и упрощает процесс управления процессами приложения в контейнерах.
-Контейнеры похожи на виртуальные машины, но они более гибкие и эффективные, быстрее работают и в большей степени зависят от операционной системы хоста.
-Все это позволяет запускать приложения в изолированных процессах внутри контейнера вместе с изолированными ресурсами, которые выделяются под них.
+Docker-see on vahend, mis automatiseerib rakenduse juurutamine nii lihtne kui võimalik ja lihtsustab rakenduste protsesside konteinerite haldamiseks. Konteinerid sarnanevad virtuaalarvutitele, kuid need on paindlikumad ja efektiivsed, töötavad kiiremini ja sõltuvad vastuvõtva operatsioonisüsteemi süsteemist. Kõik see võimaldab teil käivitada rakendusi isoleeritud protsesside sees konteiner, koos isoleeritud ressursse, mis seisavad välja nende all.
 
-> Официальная документация - https://docs.docker.com/
+Official documentation >  - https://docs.docker.com/
 
-### Установка
+### Installation
 > Debian 9
 
-В начале нужно обновить сущетсвующий список пакетов:
+Alguses peate värskendama olemasolevat pakettide loendit:
 ```bash
 sudo apt update -y
 ```
-Теперь устанавливаем несколько необходимых пакетов, который позволят менеджеру apt работать через HTTPS:
+Nüüd me paigaldame mõned vajalikud paketid, mis võimaldab apt Manager töötada HTTPS:
 ```bash
 sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 ```
-Нужно добавить специальный ключ GPG для использования официального репозитория Docker:
+Nüüd me paigaldame mõned vajalikud paketid, mis võimaldab apt Manager töötada HTTPS:
 ```bash
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 ```
-Добавляем репозиторий Docker к источникам APT менеджера:
+Lisage Docker hoidla Manager APT allikad:
 ```bash
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 ```
-Снова обновим базу данных пакетов:
+Uuendame uuesti paketi andmebaasi:
 ```bash
 sudo apt update -y
 ```
-Проверим, что установка будет выполняться из репозитория Docker.
-*Проще не использовать репозиторий Debian, чтобы быть уверенным в том, что мы успешно установим Docker последней версии.*
+ПKontrollime, et paigaldus toimub Docker hoidla. See on lihtsam mitte kasutada Debian hoidla veendumaks, et me edukalt paigaldada Docker uusim versioon.
 ```bash
 apt-cache policy docker-ce
 ```
-Примерно следующий вывод (версия может отличаться):
+Umbes me saame  järgmise järelduse (versioon võib olla erinev):
 ```bash
 docker-ce:
   Installed: 5:19.03.8~3-0~debian-stretch
@@ -45,13 +42,13 @@ docker-ce:
  *** 5:19.03.8~3-0~debian-stretch 500
         500 https://download.docker.com/linux/debian stretch/stable amd64 Packages
 ```
-Прошу заметить, в моем случае Docker уже установлен.
+Pange tähele, minu puhul on Docker juba paigaldatud.
 
-Устанавливаем Docker:
+Paigaldage Docker:
 ```bash
 sudo apt install docker-ce
 ```
-Чтобы убедиться, что докер установлен и сервис запущен, введите следующие команды:
+Veendumaks, et keskmise suurusega on installitud ja teenus on üles ja töötab, sisestage järgmised käsud:
 ```bash
 sudo systemctl status docker
 ```
@@ -59,105 +56,102 @@ sudo systemctl status docker
 docker --version
 ```
 
-### Настройка прав
-Чтобы спокойно работать с докером и не вводить постоянно пароль из-под `sudo` и не находиться под `root` пользователем,
-нужно добавить вашего пользователя в группу `docker` (Группа создатся автоматически после установки докера).
+### Setting up the rights
+Et töötada vaikselt koos keskmise suurusega ja mitte siseneda sudo parooli pidevalt ja mitte olla root kasutaja, peate lisama oma kasutaja keskmise suurusega rühma (rühm luuakse automaatselt pärast keskmise suurusega on paigaldatud).
 ```bash
 sudo usermod -aG docker "имя пользователя"
 ```
 ```bash
 su - "имя пользователя"
 ```
-### Работа с утилитой командной строки Docker
-Просмотреть все доступные команды:
+### Dealing with The Docker Command Line utility 
+Vaata kõiki saadaolevaid käske:
 ```bash
 docker
 ```
-Параметры и информация для конкретной команды:
+Kindla meeskonna sätted ja teave:
 ```bash
 docker docker-subcommand --help
 ```
-> Официальная документация: https://docs.docker.com/engine/reference/commandline/docker/
+> Official documentation: https://docs.docker.com/engine/reference/commandline/docker/
 
-### Создание dockerfile
-Для начала, нужно определиться с понятиями и терминами:
+### Create a dockerfile
+Esiteks peate määratlema mõisted ja mõisted:
 
-`docker file` место, где будут описаны действия, которые вы хотите выполнить.
+`docker file` koht, kus saate kirjeldada samme, mida soovite teha.
 
-По этому файлу создается `docker image`.
+is created by this file `docker image`.
 
-`docker image` image, на базе которого создатся контейнер.
+`docker image` image, Mille põhjal mahuti luuakse.
 
-`docker container` собственно, контейнер, который будем запускать и внутри которого выполняются процессы (крутится приложение)
+`docker container` tegelikult, konteiner, mis kestab ja milles protsessid teostatakse (taotluse keerutab)
 
-Перейдите в рабочую директорию, в которой собираетесь работать с докером.
-Создайте файл с любым именем, к примеру, `dockerfile` (указывать никакой формат не нужно)
-Инструкция для докер файла:
+töökataloogi, kus te töötate koos selle Docker. Loo faili mis tahes nimega, näiteks dockerfile  (vorming pole vajalik) juhend faili keskmise suurusega:
 
 
-#### Предположим, что мы хотим запустить приложение:
+#### Suppose we want to run an app:
 
-`FROM` какой базовый image вы собираетесь использовать для работы, также - `Docker base image`
+`FROM` Tmüts on lähtepilt, mida sa kavatsed kasutada tööks, samuti - `Docker base image`
 
-`WORKDIR` обозначить рабочую директорию.
+`WORKDIR` määrata töökataloog.
 
-`COPY` добавить сюда файлы, которые хотите использовать: скрипты, оформление и т.д.
+`COPY` Lisage siia failid, mida soovite kasutada: scripts, design, etc.
 
-`RUN` какие команды выполнить для создания вашего имиджа.
+`RUN` Milliseid käske teha, et luua oma pilt.
 
-`EXPOSE` декларируем TCP порт для использования внутри контейнера.
+`EXPOSE` Milliseid käske teha, et luua oma pilt.
 
-`CMD` какие команды выполнять внутри контейнера, когда он будет запущен.
+`CMD` Milliseid käske teha konteineri sees, kui see käivitatakse.
 
-> Официальная документация: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+> Official documentation: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
-### Работа с Docker образами
-Вы можете выполнять поиск доступных образов на Docker Hub с помощью команды `docker` с субкомандой `search`.
+### Dealing with Docker images
+Saate otsida saadaolevaid pilte Docker Hub meeskond docker with a sub-command 'search'.
 
-Например, чтобы найти образ `Debian`, введите:
+Näiteks, et leida Debian pilt, sisestage:
 ```bash
 docker search debian
 ```
-Укороченный вариант примерного вывода:
+Ligikaudse väljundi lühendatud versioon:
 ```
 NAME                                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
 ubuntu                                             Ubuntu is a Debian-based Linux operating sys…   10852               [OK]
 debian                                             Debian is a Linux distribution that's compos…   3472                [OK]
 ```
 
-*В столбце `OFFICIAL` `OK` указывает на образ, созданный и поддерживаемый компанией, реализующей проект Docker (официальный образ).*
+Aastal ametlik OK veerg osutab pildile, mille on loonud ja mida haldab Docker projekti rakendav ettevõte (ametlik kujutis).
 
-Чтобы загрузить официальный образ `debian`, введите следующую команду:
+Ametliku Debian pildi allalaadimiseks sisestage järgmine käsk:
 ```bash
 docker pull debian
 ```
-Загруженный образ можно использовать как `base image` для `docker file`.
+Allalaaditud pilti saab kasutada aluspildina keskmise suurusega faili.
 
-Создание образа:
+Kujutise tegemine:
 ```bash
-docker build -t "придумайте имя для образа" "куда/укажите директорию"
+docker build -t "mõtle välja pildi nimi" "kus/punkt kataloog"
 ```
 
-Посмотреть имеющиеся образы:
+Kuva saadaolevad pildid:
 ```bash
 docker images
 ```
 
-Удалить docker image:
+Eemalda keskmise suurusega pilt:
 ```bash
 docker image rm -f "имя образа"
 ```
-> Более подробная официальная документация: https://docs.docker.com/engine/reference/commandline/image/
+> More information: https://docs.docker.com/engine/reference/commandline/image/
 
-### Контейнеры
-Чтобы запустить контейнер, выполните следующую команду:
+### Containers
+Konteineri käivitamiseks järgige järgmist käsku:
 ```bash
 docker run -p 80:80
 ```
-*В данном случае указываются порты 80:80, где синтаксис следующий - "порт машины":"порт контейнера"*
+Sel juhul on määratud pordid 80:80, kus süntaks on järgmine-"masina Port": konteiner Port "
 
-Сочетание переключателей `-i` и `-t` предоставит вам доступ к интерактивной командной оболочке внутри контейнера:
+Kombinatsioon lülitid-i ja-t annab teile juurdepääsu interaktiivne käsk Shell sees konteiner:
 ```bash
 docker run -it "имя образа"
 ```
-> Более подробная официальная документация: https://docs.docker.com/engine/reference/commandline/container/
+> More information: https://docs.docker.com/engine/reference/commandline/container/
