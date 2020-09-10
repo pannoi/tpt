@@ -3,7 +3,12 @@ class Bakery:
 
     def __init__(self, name: str, min_experience_level: int, budget: int):
         """Class constructor."""
-        pass
+        self.name = name
+        self.min_experience_level = min_experience_level
+        self.budget = budget
+        self.recipes = {}
+        self.bakers = []
+        self.pastries = []
 
     def add_baker(self, baker: Baker) -> Baker:
         """Add baker."""
