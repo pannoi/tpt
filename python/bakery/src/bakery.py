@@ -32,3 +32,7 @@ class Bakery:
     def get_bakers(self) -> list:
         """Get baker."""
         pass
+    
+    def __str__(self):
+        """Represent object in string format."""
+        return "Bakery {}: {} baker(s)".format(self.name, len(self.bakers))
