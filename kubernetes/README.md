@@ -17,7 +17,7 @@ Kubernetes или "k8s" - это инструмент, который позво
 
 > Ссылка на официальную документацию на русском языке: https://kubernetes.io/ru/docs/concepts/overview/components/
 
-### Установка на Windows 10
+### Установка
 Ссылка на документацию по установке: https://kubernetes.io/ru/docs/tasks/tools/install-minikube/
 Возможные варианты для установки:
 > Linux
@@ -26,12 +26,22 @@ Kubernetes или "k8s" - это инструмент, который позво
 
 > Windows
 
+Перед установкой на win10 вам надо включить гипервизор(hyper-v)
+
+Установите приложение  Chocolatey
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
 Установка приложения `Minikube` с помощью `Chocolatey` (запущенный с правами администратора):
+
 ```bash
 choco install minikube
 ```
 
 Базовые команды для использования `Minikube`:
+
 ```bash
 minikube start # запустить кластер
 ```
@@ -51,14 +61,16 @@ minikube delete # удалить кластер
 ```
 
 Установка утилиты `kubectl` с помощью `Chocolatey` (запущенный с правами администратора):
+
 ```bash
 choco install kubernetes-cli
 ```
 
-> Далее нам нужно перенести `kubectl.exe` файл в папку `system32`.
+Далее нам нужно перенести `kubectl.exe` файл в папку `system32`.
 
 
 Проверить установленную версию:
+
 ```bash
 kubectl version --client
 ```

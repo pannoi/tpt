@@ -28,13 +28,19 @@ minikube start
 ```
 
 ```bash
-kubectl create "имя namespace"
+kubectl create namespace "имя"
+```
+
+Проверить список сервисов
+
+```bash
+minikube service list
 ```
 
 Проверка сервиса:
 
 ```bash
-minikube service $SVC_NAME -n $NAMESPACE
+minikube service "SVC_NAME" -n "NAMESPACE"
 ```
 
 > Подробнее: https://github.com/pannoi/tpt/tree/master/kubernetes
